@@ -10,8 +10,8 @@ const Suggested = () => {
             {
                 users && users.length ? (
                     users?.map(user => (
-                        <Link href={`/profile/${user.id}`}>
-                            <div key={user.id} className="flex items-center justify-between w-full py-3 border-b border-gray-300">
+                        <Link key={user.id} href={`/profile/${user.id}`}>
+                            <div  className="flex items-center justify-between w-full py-3 border-b border-gray-300">
                                             
                                 <div className="flex items-center">
                                     <img 

@@ -1,4 +1,7 @@
 "use client";
+import { useRef } from 'react';
+import { doc, updateDoc } from 'firebase/firestore';
+import { auth, db } from '@/firebase/config';
 import LeftSide from "@/components/LeftSidebar";
 import Navbar from "@/components/Navbar";
 import RightSide from "@/components/RightSidebar";
@@ -16,9 +19,77 @@ interface ProfileInfo {
 }
 
 const ProfilePage = () => {
+    const [avatar, setAvatar] = useState<string | null>(null);
+    const [background, setBackground] = useState<string | null>(null);
     const [activeTab, setActiveTab] = useState("posts");
-
     const { data: userData, isLoading, isError, error } = useFirebaseUser();
+
+    const fileInputRef = useRef<HTMLInputElement>(null);
+    const bgInputRef = useRef<HTMLInputElement>(null);
+
+    const handleAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file || !auth.currentUser) return;
+
+        const formData = new FormData();
+        formData.append("image", file);
+
+        try {
+            const res = await fetch("/api/upload", {
+                method: "POST",
+                body: formData,
+            });
+
+            const data = await res.json();
+
+            if (!res.ok || !data.imageUrl) {
+                console.error("Upload failed:", data);
+                return;
+            }
+
+            const imageUrl = data.imageUrl;
+
+            await updateDoc(doc(db, "users", auth.currentUser.uid), {
+                image: imageUrl,
+            });
+
+            setAvatar(imageUrl)
+        } catch (error) {
+            console.error("Error uploading avatar:", error);
+        }
+    };
+
+    const handleBackgroundUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file || !auth.currentUser) return;
+
+        const formData = new FormData();
+        formData.append("image", file);
+
+        try {
+            const res = await fetch("/api/upload", {
+                method: "POST",
+                body: formData,
+            });
+
+            const data = await res.json();
+
+            if (!res.ok || !data.imageUrl) {
+                console.error("Upload failed:", data);
+                return;
+            }
+
+            const bgUrl = data.imageUrl;
+
+            await updateDoc(doc(db, "users", auth.currentUser.uid), {
+                background: bgUrl,
+            });
+
+            setBackground(bgUrl)
+        } catch (error) {
+            console.error("Error uploading bg:", error);
+        }
+    };
 
     return (
 
@@ -35,19 +106,42 @@ const ProfilePage = () => {
                     
                     <div className="relative w-full bg-white rounded-2xl shadow-lg overflow-hidden">
                         
-                        <div className={`w-full h-60 bg-[url(${userData?.background})] bg-cover bg-center`}
-                        ></div>
+                        <div 
+                            className={`relative w-full h-60 bg-[url(${background || userData?.background})] bg-cover bg-center`}
+                        >
+                            <img
+                                    src="/edit.svg"
+                                    alt="Edit"
+                                    className="absolute bottom-1 right-1 w-7 h-7 bg-white p-1 rounded-full shadow-md cursor-pointer hover:scale-105 transition"
+                                    onClick={() => bgInputRef.current?.click()}
+                                />
+
+                                <input type="file" accept="image/*" ref={bgInputRef} onChange={handleBackgroundUpload} className="hidden" />
+                        </div>
+
+
 
                         <div className="flex flex-col items-center -mt-16">
 
-                            <motion.img
-                                src={userData?.image}
-                                alt={userData?.name}
-                                className="w-32 h-32 rounded-full border-4 border-white shadow-lg object-cover"
-                                initial={{ scale: 0.8, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                transition={{ duration: 0.5 }}
-                            />
+                            <div className="relative w-32 h-32">
+                                <motion.img
+                                    src={avatar || userData?.image}
+                                    alt={userData?.name}
+                                    className="w-full h-full rounded-full border-4 border-white shadow-lg object-cover"
+                                    initial={{ scale: 0.8, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    transition={{ duration: 0.5 }}
+                                />
+
+                                <img
+                                    src="/edit.svg"
+                                    alt="Edit"
+                                    className="absolute bottom-1 right-1 w-7 h-7 bg-white p-1 rounded-full shadow-md cursor-pointer hover:scale-105 transition"
+                                    onClick={() => fileInputRef.current?.click()}
+                                />
+
+                                <input type="file" accept="image/*" ref={fileInputRef} onChange={handleAvatarUpload} className="hidden" />
+                            </div>
 
                             <h2 className="mt-2 text-mid font-semibold">
                                 {userData?.name}
@@ -143,7 +237,7 @@ const ProfilePage = () => {
                                         ))
                                     ) : (
                                         <div className="w-full h-44 flex items-center justify-center">
-                                            <p>You haven't saved any posts yet.</p>
+                                            <p>You haven't posted anything yet.</p>
                                         </div>
                                     )
                                 )
@@ -151,7 +245,7 @@ const ProfilePage = () => {
 
                             {
                                 activeTab === "saved" && (
-                                    userData?.userPosts.length ? (
+                                    userData && userData?.userPosts.length > 0 ? (
                                         userData?.savedPostsData.map((post: ProfileInfo) => (
                                             <Link key={post.id} href={`post/${post.id}`} className="mb-4 w-1/2 bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-lg transition duration-500">
                                                 {
@@ -178,7 +272,7 @@ const ProfilePage = () => {
                                         ))
                                     ) : (
                                         <div className="w-full h-44 flex items-center justify-center">
-                                            <p>You haven't posted anything yet.</p>
+                                            <p>You haven't saved any posts yet.</p>
                                         </div>
                                     )
                                 )

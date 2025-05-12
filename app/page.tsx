@@ -2,7 +2,7 @@ import SignUp from "@/components/Signup";
 import Link from "next/link";
 import { FC } from "react";
 
-const Welcome: FC = () => {
+const Welcome = () => {
     return (
         <div className='bg-[url(/login.jpg)] bg-center bg-no-repeat bg-cover flex flex-col items-center justify-around h-full w-full p-6'>
 

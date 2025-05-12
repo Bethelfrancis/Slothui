@@ -1,11 +1,10 @@
 "use client";
 import Link from "next/link";
 import Suggested from "./Sugguested";
-import { useGetId } from "@/hooks/useGet";
+import { useFirebaseUser } from "@/hooks/useFirebaseUser";
 
 const RightSide = () => {
-    const url = 'http://localhost:4000/user'
-    const { data } = useGetId(url)
+    const { data: userData, } = useFirebaseUser();
 
     return (
         <div className="h-screen w-[24%] fixed max-[850px]:absolute right-0 top-0 border-l border-gray-300 py-4 max-[850px]:-left-full">
@@ -15,8 +14,8 @@ const RightSide = () => {
                 <div className="relative">
                     <Link href='/profile'>
                         <img 
-                            src={data?.image} 
-                            alt={data?.name} 
+                            src={userData?.image} 
+                            alt={userData?.name} 
                             className="w-9 h-9 rounded-full object-cover"
                         />
                     </Link>

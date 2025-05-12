@@ -60,11 +60,11 @@ const DynComment = ({ postId }: DynCommentProps) => {
             className="flex-1 outline-none text-sm placeholder-gray-500 bg-transparent"
             disabled={isPending}
         />
-        <button type="submit" className="text-blue-500 hover:text-blue-600 ml-2">
+        <button type="submit" className="ml-2">
             <img
-            src="/Send.png"
-            alt="Comment Icon"
-            className="cursor-pointer"
+                src="/Send.png"
+                alt="Comment Icon"
+                className="cursor-pointer"
             />
         </button>
     </form>

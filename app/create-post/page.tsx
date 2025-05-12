@@ -1,15 +1,15 @@
 "use client";
-import LeftSide from "@/components/LeftSidebar";
-import RightSide from "@/components/RightSidebar";
-import TopNav from "@/components/TopNav";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Navbar from "@/components/Navbar";
 import { auth } from "@/firebase/config";
 import { useRouter } from "next/navigation";
 import { useFirebaseUser } from "@/hooks/useFirebaseUser";
 import { useAddPosts, Post } from "@/hooks/useFirebaseAddPost";
-
+import LeftSide from "@/components/LeftSidebar";
+import RightSide from "@/components/RightSidebar";
+import BottomNav from "@/components/BottomNav";
+import Search from "@/components/Search";
+import Navbar from "@/components/Navbar";
 
 const CreatePost = () => {
     const { data: userData } = useFirebaseUser();
@@ -21,11 +21,12 @@ const CreatePost = () => {
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
-        const reader = new FileReader();
-        reader.onload = () => setImage(reader.result as string);
-        reader.readAsDataURL(file);
+            const reader = new FileReader();
+            reader.onload = () => setImage(reader.result as string);
+            reader.readAsDataURL(file);
         }
     };
+
     const removeImage = () => setImage(null);
 
     const { mutate, isPending } = useAddPosts()
@@ -42,8 +43,7 @@ const CreatePost = () => {
             desc: caption,
             postImage: images,
             likes: [],
-            comment: [],
-            share: 0
+            comment: []
         };
 
         mutate(post, {
@@ -66,11 +66,11 @@ const CreatePost = () => {
             <div className="w-[56%] mx-[20%] max-[850px]:mx-0 max-[850px]:w-full">
                 
                 <Navbar />
-                <TopNav />
+                <Search />
 
-                <div className="w-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-36 max-[450px]:mt-[200px]">
+                <div className="w-full h-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-[150px]">
 
-                    <form onSubmit={handleSubmit} className="w-full bg-white p-6 rounded-lg shadow-lg">
+                    <form onSubmit={handleSubmit} className="w-full bg-white p-6 rounded-lg shadow-lg mb-16">
 
                         <h2 className="text-2xl font-semibold text-left">Create Post</h2>
 
@@ -131,6 +131,8 @@ const CreatePost = () => {
                     </form>
 
                 </div>
+
+                <BottomNav />
 
             </div>
 

@@ -1,6 +1,5 @@
 "use client";
-
-import { useState } from "react";
+import { useFetchSuggestedUsers } from "@/hooks/useFirebaseSuggestedUsers";
 import LeftSide from "@/components/LeftSidebar";
 import RightSide from "@/components/RightSidebar";
 import Friends from "@/components/Friends";
@@ -8,11 +7,7 @@ import Navbar from "@/components/Navbar";
 import Search from "@/components/Search";
 
 const FindFriends = () => {
-    const users = [
-        { id: 1, name: "Bethel", username: "@bethel_dev", avatar: "/user-img.png" },
-        { id: 2, name: "Alex Smith", username: "@alex_smith", avatar: "/user-img.png" },
-        { id: 3, name: "Sophia James", username: "@sophia_j", avatar: "/user-img.png" },
-    ];
+    const { data: users, isLoading } = useFetchSuggestedUsers();
 
     return (
         <div className='bg-white'>
@@ -26,7 +21,7 @@ const FindFriends = () => {
 
                 <div className="w-full max-[850px]:py-5 mt-16 max-[850px]:mt-32">
                     
-                    <Friends />
+                    <Friends users={users} isLoading={isLoading} />
 
                 </div>
 

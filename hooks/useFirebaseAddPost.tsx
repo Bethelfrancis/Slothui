@@ -3,15 +3,14 @@ import { db } from "@/firebase/config";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export interface Post {
-    uid: string | undefined,
-    name: string,
-    bio: string,
-    image: string,
-    desc: string, 
-    postImage: string | null,
-    likes: string[],
-    comment: any[],
-    share: number
+    uid: string | undefined
+    name: string | undefined
+    bio: string | undefined
+    image: string | undefined
+    desc: string
+    postImage: string | null
+    likes: string[]
+    comment: any[]
 }
 
 export const useAddPosts = () => {
