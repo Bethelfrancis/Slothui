@@ -86,9 +86,8 @@ const Messages = () => {
 
                             {
                                 isLoading && (
-                                    <div className="cursor-pointer space-y-6">
-
-                                        <div className="flex gap-3 items-center">
+                                    Array(5).fill(0).map((_, index) => (
+                                        <div key={index} className="flex gap-3 items-center mb-4 animate-pulse">
                                             <div className="w-12 h-12 rounded-full object-cover bg-white">
                                             </div>
                                             <div className="space-y-2">
@@ -96,44 +95,7 @@ const Messages = () => {
                                                 <p className="w-20 h-2.5 bg-white rounded-lg"></p>
                                             </div>
                                         </div>
-
-                                        <div className="flex gap-3 items-center">
-                                            <div className="w-12 h-12 rounded-full object-cover bg-white">
-                                            </div>
-                                            <div className="space-y-2">
-                                                <p className="w-40 h-2.5 bg-white rounded-lg"></p>
-                                                <p className="w-20 h-2.5 bg-white rounded-lg"></p>
-                                            </div>
-                                        </div>
-
-                                        <div className="flex gap-3 items-center">
-                                            <div className="w-12 h-12 rounded-full object-cover bg-white">
-                                            </div>
-                                            <div className="space-y-2">
-                                                <p className="w-40 h-2.5 bg-white rounded-lg"></p>
-                                                <p className="w-20 h-2.5 bg-white rounded-lg"></p>
-                                            </div>
-                                        </div>
-
-                                        <div className="flex gap-3 items-center">
-                                            <div className="w-12 h-12 rounded-full object-cover bg-white">
-                                            </div>
-                                            <div className="space-y-2">
-                                                <p className="w-40 h-2.5 bg-white rounded-lg"></p>
-                                                <p className="w-20 h-2.5 bg-white rounded-lg"></p>
-                                            </div>
-                                        </div>
-
-                                        <div className="flex gap-3 items-center">
-                                            <div className="w-12 h-12 rounded-full object-cover bg-white">
-                                            </div>
-                                            <div className="space-y-2">
-                                                <p className="w-40 h-2.5 bg-white rounded-lg"></p>
-                                                <p className="w-20 h-2.5 bg-white rounded-lg"></p>
-                                            </div>
-                                        </div>
-
-                                    </div>
+                                    ))
                                 )
                             }
                         </div>

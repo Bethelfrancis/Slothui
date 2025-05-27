@@ -1,6 +1,10 @@
+"use client"
 import Link from "next/link";
+import { useState } from "react";
+
 
 const Navbar = () => {
+    const [ isOpen, setIsOpen ] = useState(false)
     return (
         <div className="hidden fixed left-0 top-0 bg-white max-[850px]:flex items-center justify-between w-full px-3 py-2 border-b border-gray-500 z-20">
             

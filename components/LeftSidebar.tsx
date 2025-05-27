@@ -1,17 +1,13 @@
 "use client";
 import Link from "next/link";
 import { useFirebaseUser } from "@/hooks/useFirebaseUser";
-import { motion } from "framer-motion";
 
 const LeftSide = () => {
     const { data: userData, isLoading, isError, error } = useFirebaseUser();
 
     return (
-        <motion.div 
+        <div 
             className="w-[20%] h-screen fixed max-[850px]:absolute max-[850px]:-left-full left-0 top-0 border-r border-gray-300 p-4 max-lg:p-2 flex flex-col justify-between"
-            initial={{ x: -300, }}
-            animate={{ x: 0 }}
-            transition={{ duration: 0.5 }}
         >
             
             <div className="w-full space-y-9">
@@ -85,15 +81,26 @@ const LeftSide = () => {
                 )}
 
                 {
-                    isError && <h2 className="text-red-900 text-lg text-center">{error.message}</h2>
+                    isError && <h2 className="text-red-700 text-lg text-center">{error.message}</h2>
                 }
 
                 {
-                    isLoading && <h2 className="text-green-800 text-lg text-center">Loading...</h2>
+                    isLoading && (
+                        <div className="flex items-center justify-between w-full py-3 animate-pulse">
+                            <div className="flex items-center">
+                                <div className="w-10 h-10 rounded-full bg-gray-300 mr-2" />
+                                <div className="space-y-1">
+                                    <div className="w-24 h-3 bg-gray-300 rounded" />
+                                    <div className="w-16 h-2 bg-gray-300 rounded" />
+                                </div>
+                            </div>
+                            <div className="w-5 h-5 bg-gray-300 rounded" />
+                        </div>
+                    )
                 }
             </div>
 
-        </motion.div>
+        </div>
     );
 }
  

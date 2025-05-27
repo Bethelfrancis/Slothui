@@ -1,6 +1,5 @@
 'use client'
 import LeftSide from "@/components/LeftSidebar";
-import Navbar from "@/components/Navbar";
 import RightSide from "@/components/RightSidebar";
 import DynPost from "@/components/DynamicPost";
 import { useGetPostById } from "@/hooks/useFirebasePostId";

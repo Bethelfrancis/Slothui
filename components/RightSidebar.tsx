@@ -4,7 +4,7 @@ import Suggested from "./Sugguested";
 import { useFirebaseUser } from "@/hooks/useFirebaseUser";
 
 const RightSide = () => {
-    const { data: userData, } = useFirebaseUser();
+    const { data: userData, isLoading } = useFirebaseUser();
 
     return (
         <div className="h-screen w-[24%] fixed max-[850px]:absolute right-0 top-0 border-l border-gray-300 py-4 max-[850px]:-left-full">
@@ -12,14 +12,20 @@ const RightSide = () => {
             <div className="w-full flex items-center justify-between border-b border-gray-300 px-3 pb-4 max-lg:px-1.5">
 
                 <div className="relative">
-                    <Link href='/profile'>
-                        <img 
-                            src={userData?.image} 
-                            alt={userData?.name} 
-                            className="w-9 h-9 rounded-full object-cover"
-                        />
-                    </Link>
-
+                    {
+                        isLoading ? (
+                            <div className="w-9 h-9 rounded-full bg-gray-300"></div>
+                        ) : (
+                            <Link href='/profile'>
+                                <img 
+                                    src={userData?.image} 
+                                    alt={userData?.name} 
+                                    className="w-9 h-9 rounded-full object-cover"
+                                />
+                            </Link>
+                        )
+                    }
+                    
                     <div className="absolute -right-1 bottom-0.5 w-3 h-3 bg-green-700 rounded-full border border-white"></div>
                 
                 </div>

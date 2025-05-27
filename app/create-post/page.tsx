@@ -31,32 +31,56 @@ const CreatePost = () => {
 
     const { mutate, isPending } = useAddPosts()
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
         const user = auth.currentUser;
+        let imageUrl: string | null = null;
 
-        const post: Post = {
-            uid: user?.uid,
-            name: userData?.name,
-            bio: userData?.bio,
-            image: userData?.image,
-            desc: caption,
-            postImage: images,
-            likes: [],
-            comment: []
-        };
+        try {
+            if (images) {
+                const formData = new FormData();
+                formData.append("image", images);
 
-        mutate(post, {
-            onSuccess: () => {
-                setCaption('')
-                setImage(null)
-                router.push('/dashboard')
-            },
-            onError: error => {
-                console.error("Failed to Post", error)
+                const res = await fetch("/api/upload", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const data = await res.json();
+
+                if (!res.ok || !data.imageUrl) {
+                    console.error("Image upload failed:", data);
+                    return;
+                }
+
+                imageUrl = data.imageUrl;
             }
-        }) 
-    }
+
+            const post: Post = {
+                uid: user?.uid,
+                name: userData?.name,
+                bio: userData?.bio,
+                image: userData?.image,
+                desc: caption,
+                postImage: imageUrl,
+                likes: [],
+                comment: [],
+            };
+
+            mutate(post, {
+                onSuccess: () => {
+                    setCaption('');
+                    setImage(null);
+                    router.push('/dashboard');
+                },
+                onError: error => {
+                    console.error("Failed to Post", error);
+                }
+            });
+        } catch (err) {
+            console.error("Post creation failed:", err);
+        }
+    };
 
     return (
         <div className='bg-white'>

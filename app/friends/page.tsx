@@ -5,6 +5,7 @@ import RightSide from "@/components/RightSidebar";
 import Friends from "@/components/Friends";
 import Navbar from "@/components/Navbar";
 import Search from "@/components/Search";
+import BottomNav from "@/components/BottomNav";
 
 const FindFriends = () => {
     const { data: users, isLoading } = useFetchSuggestedUsers();
@@ -24,6 +25,8 @@ const FindFriends = () => {
                     <Friends users={users} isLoading={isLoading} />
 
                 </div>
+
+                <BottomNav />
 
             </div>
 

@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-poppin overflow-x-hidden"> 
         <ReactQueryProvider>{children}</ReactQueryProvider>
-    </body>
+      </body>
     </html>
   );
 }
