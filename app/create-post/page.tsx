@@ -29,57 +29,33 @@ const CreatePost = () => {
 
     const removeImage = () => setImage(null);
 
-    const { mutate, isPending } = useAddPosts()
+    const { mutate, isPending, isError, error } = useAddPosts()
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const user = auth.currentUser;
-        let imageUrl: string | null = null;
 
-        try {
-            if (images) {
-                const formData = new FormData();
-                formData.append("image", images);
+        const post: Post = {
+            uid: user?.uid,
+            name: userData?.name,
+            bio: userData?.bio,
+            image: userData?.image,
+            desc: caption,
+            postImage: images || null,
+            likes: [],
+            comment: [],
+        };
 
-                const res = await fetch("/api/upload", {
-                    method: "POST",
-                    body: formData,
-                });
-
-                const data = await res.json();
-
-                if (!res.ok || !data.imageUrl) {
-                    console.error("Image upload failed:", data);
-                    return;
-                }
-
-                imageUrl = data.imageUrl;
+        mutate(post, {
+            onSuccess: () => {
+                setCaption('');
+                setImage(null);
+                router.push('/dashboard');
+            },
+            onError: error => {
+                console.error("Failed to Post", error);
             }
-
-            const post: Post = {
-                uid: user?.uid,
-                name: userData?.name,
-                bio: userData?.bio,
-                image: userData?.image,
-                desc: caption,
-                postImage: imageUrl,
-                likes: [],
-                comment: [],
-            };
-
-            mutate(post, {
-                onSuccess: () => {
-                    setCaption('');
-                    setImage(null);
-                    router.push('/dashboard');
-                },
-                onError: error => {
-                    console.error("Failed to Post", error);
-                }
-            });
-        } catch (err) {
-            console.error("Post creation failed:", err);
-        }
+        });
     };
 
     return (
@@ -92,11 +68,15 @@ const CreatePost = () => {
                 <Navbar />
                 <Search />
 
-                <div className="w-full h-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-[150px]">
+                <div className="w-full h-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-[70px]">
 
                     <form onSubmit={handleSubmit} className="w-full bg-white p-6 rounded-lg shadow-lg mb-16">
 
                         <h2 className="text-2xl font-semibold text-left">Create Post</h2>
+
+                        <p className='text-black text-sm opacity-75 my-3'>
+                            ⚠️ Note: Please upload an image that is less than 1.2MB. Large files may fail to upload.
+                        </p>
 
                         <textarea
                             placeholder="What's on your mind?"
@@ -141,6 +121,10 @@ const CreatePost = () => {
                                 </div>
                             )}
                         </div>
+
+                        {
+                            isError && <p className="">{error.message}</p>
+                        }
 
                         <motion.button
                             disabled={isPending}

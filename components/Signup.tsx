@@ -65,13 +65,13 @@ const SignUpForm = () => {
           const bgUrl = formData.background ? await uploadImage(formData.background) : '/login.jpg';
   
           await setDoc(doc(db, 'users', user.uid), {
-              id: user.uid,
-              name: formData.fullName,
-              username: formData.username,
-              email: formData.email,
+                id: user.uid,
+                name: formData.fullName,
+                username: formData.username,
+                email: formData.email,
                 bio: formData.bio,
-                image: imageUrl,
-                background: bgUrl,
+                image: imageUrl || '/avatar.png',
+                background: bgUrl || '/sign.jpg',
                 createdAt: new Date(),
                 followers: [],
                 following: [],
@@ -88,7 +88,7 @@ const SignUpForm = () => {
     };
 
     return (
-        <div className="bg-midnight max-w-[500px] w-full px-4 py-5 text-white shadow-2xl rounded-2xl">
+        <form className="bg-midnight max-w-[500px] w-full px-4 py-5 text-white shadow-2xl rounded-2xl">
             {step === 1 && (
                 <>
                     <div className="w-full mb-4">
@@ -203,7 +203,7 @@ const SignUpForm = () => {
                 {step < 4 && <button className="bg-white mt-3 w-[30%] py-2 text-midnight text-lg rounded-xl cursor-pointer hover:bg-gray-300 transition-all duration-400 ease-out" onClick={() => setStep(step + 1)}>Next</button>}
                 {step === 4 && <button className="bg-white mt-3 w-[30%] py-2 text-midnight text-lg rounded-xl cursor-pointer hover:bg-gray-300 transition-all duration-400 ease-out" onClick={handleSubmit} disabled={loading}>{loading ? 'Creating...' : 'Finish'}</button>}
             </div>
-        </div>
+        </form>
     );
 };
 

@@ -1,16 +1,16 @@
+import Link from "next/link";
 import React from "react";
 
 interface User {
-  id: string;
-  username: string;
-  image: string;
-  name: string
-  // add other fields as needed
+    id: string;
+    username: string;
+    image: string;
+    name: string
 }
 
 interface FriendsProps {
-  users?: User[];
-  isLoading: boolean;
+    users?: User[];
+    isLoading: boolean;
 }
 
 
@@ -42,14 +42,17 @@ const Friends: React.FC<FriendsProps> = ({ users, isLoading }) => {
 
                                 </div>
                                 
-                                <button className="flex items-center space-x-2 bg-blues text-white px-4 py-1.5 rounded-full hover:bg-midnight transition-all duration-500 cursor-pointer">
-                                    Follow
-                                    <img 
-                                        src="/plusw.png" 
-                                        alt="Plus" 
-                                        className="ml-2 -mt-0.5 w-4"
-                                    />
-                                </button>
+                                <Link href={`profile/${user.id}`}>
+                                   <button className="flex items-center space-x-2 bg-blues text-white px-4 py-1.5 rounded-full hover:bg-midnight transition-all duration-500 cursor-pointer">
+                                        Follow
+                                        <img 
+                                            src="/plusw.png" 
+                                            alt="Plus" 
+                                            className="ml-2 -mt-0.5 w-4"
+                                        />
+                                    </button> 
+                                </Link>
+                                
                             </div>
                         )) : (
                             <p className='text-center text-black opacity-65 text-lg mt-10'>No friend suggestions at the moment.</p>

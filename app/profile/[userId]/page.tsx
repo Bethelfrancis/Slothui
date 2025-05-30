@@ -31,7 +31,7 @@ const UsersProfile = () => {
 
                 {
                     isLoadingUser ? (
-                        <div className="w-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-36 animate-pulse">
+                        <div className="w-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-[70px] animate-pulse max-[850px]:mb-14">
 
                             <div className="relative w-full bg-white rounded-2xl shadow-lg overflow-hidden">
 
@@ -58,14 +58,13 @@ const UsersProfile = () => {
                                     <div className="mt-4 h-9 w-32 bg-gray-300 rounded-3xl" />
                                 </div>
 
-                                <div className="mt-6 flex w-full border-b border-gray-300">
-                                    <div className="flex-1 text-center font-semibold opacity-70">Post</div>
-                                    <div className="flex-1 text-center font-semibold opacity-70">Saved Post</div>
+                                <div className="mt-6 w-full border-b border-gray-300">
+                                    <div className="text-center font-semibold opacity-70">Post</div>
                                 </div>
 
-                                <div className="w-full flex gap-4 px-4 py-4">
+                                <div className="w-full flex max-[455px]:flex-col gap-4 px-4 py-4">
                                     {Array(2).fill(0).map((_, i) => (
-                                    <div key={i} className="w-1/2 h-64 bg-gray-200 rounded-lg" />
+                                    <div key={i} className="w-1/2 max-[455px]:w-full h-64 bg-gray-200 rounded-lg" />
                                     ))}
                                 </div>
 
@@ -73,7 +72,7 @@ const UsersProfile = () => {
 
                         </div>
                     ) : (
-                        <div className="w-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-36">
+                        <div className="w-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-[70px] max-[850px]:mb-14">
                             
                             <div className="relative w-full bg-white rounded-2xl shadow-lg overflow-hidden">
                                 
@@ -184,7 +183,6 @@ const UsersProfile = () => {
                         </div>
                     )
                 }
-
 
                 <BottomNav />
 

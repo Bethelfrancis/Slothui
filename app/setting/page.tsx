@@ -25,7 +25,7 @@ const Settings = () => {
 
     const [password, setPassword] = useState('');
     const [showForm, setShowForm] = useState(false);
-    const { mutate: deleteAccount, isPending } = useDeleteAccount();
+    const { mutate: deleteAccount, isPending, isError, error } = useDeleteAccount();
 
     const handleDelete = () => {
         if (!password) return alert('Enter your password');
@@ -73,9 +73,7 @@ const Settings = () => {
                 <Navbar />
                 <Search />
 
-                
-
-                <div className="relative w-full p-6 py-14 max-[850px]:p-3 max-[850px]:py-10 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-36">
+                <div className="relative w-full p-6 py-14 max-[850px]:p-3 max-[850px]:py-10 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-[70px]">
 
                     <h2 className="text-2xl font-semibold">
                         Settings
@@ -235,10 +233,10 @@ const Settings = () => {
                                     className="w-full text-black border border-gray-300 px-2 py-1 rounded-lg outline-0 mb-3"
                                     required
                                 />
+                                {isError && <p className="text-center text-black opacity-70">{error.message}</p>}
                                 <button
                                     onClick={() => {
                                         handleDelete();
-                                        setShowForm(!showForm);
                                     }}
                                     className="bg-red-700 text-white px-4 py-1.5 rounded-sm cursor-pointer w-full"
                                 >

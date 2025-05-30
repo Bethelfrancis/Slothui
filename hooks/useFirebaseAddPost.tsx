@@ -18,8 +18,8 @@ export const useAddPosts = () => {
 
     const addPost = async (post: Post) => {
         const docRef = await addDoc(collection(db, "posts"), {
-        ...post,
-        createdAt: serverTimestamp(),
+            ...post,
+            createdAt: serverTimestamp(),
         });
         return docRef;
     };
@@ -27,7 +27,7 @@ export const useAddPosts = () => {
     return useMutation({
         mutationFn: addPost,
         onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ["posts"] });
+            queryClient.invalidateQueries({ queryKey: ["posts"] });
         },
     });
 };

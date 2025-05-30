@@ -101,11 +101,11 @@ const ProfilePage = () => {
             <div className="w-[56%] mx-[20%] max-[850px]:mx-0 max-[850px]:w-full">
                 
                 <Navbar />
-                <Search /> 
+                <Search />
 
                 {
                     isLoading ? (
-                        <div className="w-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-36 animate-pulse">
+                        <div className="w-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-36 animate-pulse max-[850px]:mb-14">
 
                             <div className="relative w-full bg-white rounded-2xl shadow-lg overflow-hidden">
 
@@ -119,14 +119,14 @@ const ProfilePage = () => {
                                     <div className="mt-3 h-4 w-60 bg-gray-200 rounded" />
 
                                     <div className="flex items-center justify-between mt-4 space-x-16">
-                                    <div className="flex items-center flex-col space-y-2">
-                                        <div className="h-6 w-5 bg-gray-300 rounded" />
-                                        <div className="h-5 w-28 bg-gray-200 rounded" />
-                                    </div>
-                                    <div className="flex items-center flex-col space-y-2">
-                                        <div className="h-6 w-5 bg-gray-300 rounded" />
-                                        <div className="h-5 w-28 bg-gray-200 rounded" />
-                                    </div>
+                                        <div className="flex items-center flex-col space-y-2">
+                                            <div className="h-6 w-5 bg-gray-300 rounded" />
+                                            <div className="h-5 w-28 bg-gray-200 rounded" />
+                                        </div>
+                                        <div className="flex items-center flex-col space-y-2">
+                                            <div className="h-6 w-5 bg-gray-300 rounded" />
+                                            <div className="h-5 w-28 bg-gray-200 rounded" />
+                                        </div>
                                     </div>
 
                                     <div className="mt-4 h-9 w-32 bg-gray-300 rounded-3xl" />
@@ -137,9 +137,9 @@ const ProfilePage = () => {
                                     <div className="flex-1 text-center font-semibold opacity-70">Saved Post</div>
                                 </div>
 
-                                <div className="w-full flex gap-4 px-4 py-4">
+                                <div className="w-full flex max-[550px]:flex-col gap-4 px-4 py-4">
                                     {Array(2).fill(0).map((_, i) => (
-                                    <div key={i} className="w-1/2 h-64 bg-gray-200 rounded-lg" />
+                                    <div key={i} className="w-1/2 max-[550px]:w-full h-64 bg-gray-200 rounded-lg" />
                                     ))}
                                 </div>
 
@@ -147,7 +147,7 @@ const ProfilePage = () => {
 
                         </div>
                     ) : (
-                        <div className="w-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-36">
+                        <div className="w-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-[70px] max-[850px]:mb-14">
                             
                             <div className="relative w-full bg-white rounded-2xl shadow-lg overflow-hidden">
 
@@ -169,7 +169,7 @@ const ProfilePage = () => {
                                     <img
                                         src="/edit.svg"
                                         alt="Edit"
-                                        className="absolute bottom-1 right-1 w-7 h-7 bg-white p-1 rounded-full shadow-md cursor-pointer hover:scale-105 transition z-20"
+                                        className="absolute bottom-1 right-1 w-7 h-7 bg-white p-1 rounded-full shadow-md cursor-pointer hover:scale-105 transition z-10"
                                         onClick={() => bgInputRef.current?.click()}
                                     />
 
@@ -185,7 +185,7 @@ const ProfilePage = () => {
 
                                 <div className="flex flex-col items-center -mt-16">
 
-                                    <div className="relative w-32 h-32">
+                                    <div className="relative w-32 h-32 bg-white rounded-full">
                                         <motion.img
                                             src={avatar || userData?.image}
                                             alt={userData?.name}
@@ -268,13 +268,13 @@ const ProfilePage = () => {
                                     </button>
                                 </div>
 
-                                <div className="w-full flex items-center bg-gray-100 px-4 py-4 space-x-3">
+                                <div className="w-full flex max-[550px]:flex-col items-center bg-gray-100 px-4 py-4 space-x-3">
 
                                     {
                                         activeTab === "posts" && (
                                             userData?.userPosts.length ? (
                                                 userData?.userPosts.map((post: ProfileInfo) => (
-                                                    <Link key={post.id} href={`post/${post.id}`} className="mb-4 w-1/2 bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-lg transition duration-500">
+                                                    <Link key={post.id} href={`post/${post.id}`} className="mb-4 w-1/2 max-[550px]:w-full bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-lg transition duration-500">
                                                         {
                                                             post.postImage ? (
                                                             <img
@@ -309,7 +309,7 @@ const ProfilePage = () => {
                                         activeTab === "saved" && (
                                             userData && userData?.userPosts.length > 0 ? (
                                                 userData?.savedPostsData.map((post: ProfileInfo) => (
-                                                    <Link key={post.id} href={`post/${post.id}`} className="mb-4 w-1/2 bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-lg transition duration-500">
+                                                    <Link key={post.id} href={`post/${post.id}`} className="mb-4 w-1/2 max-[550px]:w-full bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-lg transition duration-500">
                                                         {
                                                             post.postImage ? (
                                                             <img
@@ -344,14 +344,6 @@ const ProfilePage = () => {
 
                             </div>
 
-                        </div>
-                    )
-                }
-
-                {
-                    isError && (
-                        <div className='bg-red-100 text-red-700 text-center border border-red-300 p-3 rounded mb-4 text-sm'>
-                            {'Something went wrong.'}
                         </div>
                     )
                 }
