@@ -1,6 +1,8 @@
 'use client';
+import { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db, auth } from "@/firebase/config";
 import { useParams, useRouter } from "next/navigation";
-import { auth } from "@/firebase/config";
 import { useChatId } from "@/hooks/useFirebaseChatId";
 import LeftSide from "@/components/LeftSidebar";
 import RightSide from "@/components/RightSidebar";
@@ -10,6 +12,29 @@ const ChatPage = () => {
     const chatId = params.chatId as string;
     const currentUser = auth.currentUser;
     const router = useRouter()
+    const [otherUser, setOtherUser] = useState<{ name: string; uid: string } | null>(null);
+
+    useEffect(() => {
+        const fetchOtherUser = async () => {
+            const currentUid = auth.currentUser?.uid;
+            if (!currentUid || !chatId) return;
+
+            const chatDoc = await getDoc(doc(db, "chats", chatId));
+            if (!chatDoc.exists()) return;
+
+            const members = chatDoc.data().members;
+            const otherUid = members.find((id: string) => id !== currentUid);
+            if (!otherUid) return;
+
+            const userDoc = await getDoc(doc(db, "users", otherUid));
+            if (userDoc.exists()) {
+                setOtherUser({ uid: otherUid, name: userDoc.data().name });
+            }
+        };
+
+        fetchOtherUser();
+    }, [chatId]);
+
 
     const { messages, text, setText, sendMessage, sending } = useChatId(chatId);
 
@@ -38,7 +63,10 @@ const ChatPage = () => {
 
                 <div className="p-5 border-b border-gray-300 bg-white sticky top-0 z-10">
 
-                    <p className="font-semibold text-xl text-center">Abdul Quayyum</p>
+                    <p className="font-semibold text-xl text-center">
+                        {otherUser ? otherUser.name : "Loading..."}
+                    </p>
+
                     <img 
                         src="/upright.png" 
                         alt="Left Arrow" 
@@ -70,7 +98,7 @@ const ChatPage = () => {
                                             >
 
                                                 <div
-                                                    className={`max-w-[45%] rounded-2xl px-4 py-2 ${
+                                                    className={`max-w-[45%] rounded-xl px-2 py-1.5 ${
                                                         isSender 
                                                             ? "bg-midnight text-white ml-auto" 
                                                             : "bg-gray-200 text-black"

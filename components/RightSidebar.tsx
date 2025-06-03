@@ -14,13 +14,13 @@ const RightSide = () => {
                 <div className="relative">
                     {
                         isLoading ? (
-                            <div className="w-9 h-9 rounded-full bg-gray-300"></div>
+                            <div className="w-9 h-9 rounded-full bg-gray-300 animate-pulse"></div>
                         ) : (
                             <Link href='/profile'>
                                 <img 
                                     src={userData?.image} 
                                     alt={userData?.name} 
-                                    className="w-9 h-9 rounded-full object-cover"
+                                    className="w-9 h-9 rounded-full object-cover shadow-lg"
                                 />
                             </Link>
                         )

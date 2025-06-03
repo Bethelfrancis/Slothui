@@ -76,15 +76,27 @@ const UsersProfile = () => {
                             
                             <div className="relative w-full bg-white rounded-2xl shadow-lg overflow-hidden">
                                 
-                                <div className={`w-full h-60 bg-[url(${user?.background})] bg-cover bg-center`}
-                                ></div>
+                                <div className="relative w-full h-60 overflow-hidden">
+                                    <div
+                                        className="absolute inset-0 bg-cover bg-center filter blur-md scale-110"
+                                        style={{
+                                            backgroundImage: `url(${userData?.background})`,
+                                        }}
+                                    />
+
+                                    <img 
+                                        src={userData?.background} 
+                                        alt={userData?.name}
+                                        className="relative block h-60 object-cover mx-auto"
+                                    />
+                                </div>
 
                                 <div className="flex flex-col items-center -mt-16">
 
                                     <motion.img
                                         src={user?.image}
                                         alt={user?.name}
-                                        className="w-32 h-32 rounded-full border-4 border-white shadow-lg object-cover"
+                                        className="w-32 h-32 rounded-full border-4 border-white shadow-lg object-cover z-20"
                                         initial={{ scale: 0.8, opacity: 0 }}
                                         animate={{ scale: 1, opacity: 1 }}
                                         transition={{ duration: 0.5 }}

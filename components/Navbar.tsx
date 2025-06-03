@@ -1,9 +1,9 @@
 "use client"
+import { useFirebaseUser } from "@/hooks/useFirebaseUser";
 import Link from "next/link";
-import { useState } from "react";
-
 
 const Navbar = () => {
+    const { data: userData } = useFirebaseUser()
     
     return (
         <div className="hidden fixed left-0 top-0 bg-white max-[850px]:flex items-center justify-between w-full px-3 py-2 border-b border-gray-500 z-20">
@@ -16,12 +16,19 @@ const Navbar = () => {
                 />
             </Link>
                     
-            <div className="block bg-transparent rounded-xl p-2 space-y-[4.5px] -mt-2">
-
-                <span className="block w-7 h-[3px] bg-black rounded-lg opacity-90"></span>
-                <span className="block w-7 h-[3px] bg-black rounded-lg opacity-90"></span>
-                <span className="block w-7 h-[3px] bg-black rounded-lg opacity-90"></span>
-
+            <div className="flex items-center gap-5 -mt-3">
+                <img
+                    src="/search.png"
+                    alt="Search Icon"
+                    className="w-7 h-7 rounded-full object-cover cursor-pointer"
+                />
+                <Link href='/user-profile'>
+                    <img
+                        src={userData?.image}
+                        alt={userData?.name} 
+                        className="w-10 h-10 rounded-full object-cover cursor-pointer shadow-lg"
+                    />
+                </Link>
             </div>
 
         </div>

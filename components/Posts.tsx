@@ -192,7 +192,7 @@ const Post = () => {
                     )) : isLoading
                         ? ''
                         : (
-                        <p className='text-center'>No post yet be the first to post</p>
+                        <p className='text-center h-screen'>No post yet be the first to post</p>
                     )
             }
 
@@ -202,7 +202,7 @@ const Post = () => {
 
             {
                 isLoading && (
-                    <div className="w-full py-5 bg-white shadow-md border border-gray-300 rounded-2xl">
+                    <div className="w-full py-5 bg-white shadow-md border border-gray-300 rounded-2xl animate-pulse">
                         
                         <div className="relative flex items-center justify-between w-full px-4 pb-5 border-b border-gray-300">
                             
