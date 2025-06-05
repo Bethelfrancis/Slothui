@@ -3,7 +3,19 @@ import { useQuery } from "@tanstack/react-query";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "@/firebase/config";
 
-const fetchPosts = async () => {
+export interface PostType {
+    id: string;
+    uid: string;
+    name: string;
+    bio: string;
+    image: string;
+    postImage?: string;
+    desc: string;
+    likes: string[];
+    comment: { id: string; text: string; userId: string }[];
+}
+
+const fetchPosts = async (): Promise<PostType[]> => {
     const postsRef = collection(db, "posts");
     const q = query(postsRef, orderBy("createdAt", "desc"));
     const querySnapshot = await getDocs(q);
@@ -11,7 +23,7 @@ const fetchPosts = async () => {
     const posts = querySnapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data(),
-    }));
+    })) as PostType[];
 
     console.log("Query snapshot size:", querySnapshot.size);
 

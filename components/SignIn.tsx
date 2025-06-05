@@ -22,9 +22,11 @@ const LogIn = () => {
         try {
             await signInWithEmailAndPassword(auth, formData.email, formData.password);
             router.push("/dashboard");
-        } catch (error: any) {
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                console.error("Login Error:", error.message);
+            }
             setError("Invalid email or password");
-            console.error("Login Error:", error.message);
         } finally {
             setLoading(false);
         }

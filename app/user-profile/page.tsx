@@ -105,6 +105,14 @@ const ProfilePage = () => {
                 <Search />
 
                 {
+                    isError && (
+                        <div className='bg-red-100 text-red-700 text-center border border-red-300 p-3 rounded mb-4 text-sm'>
+                            {'Something went wrong.'}
+                        </div>
+                    )
+                }
+
+                {
                     isLoading ? (
                         <div className="w-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-36 animate-pulse max-[850px]:mb-14">
 

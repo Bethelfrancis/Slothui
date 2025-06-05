@@ -1,5 +1,5 @@
 'use client'
-import { usePosts } from "@/hooks/useFirebasePost";
+import { PostType, usePosts } from "@/hooks/useFirebasePost";
 import Link from "next/link";
 import { useToggleLike } from "@/hooks/useFirebaseLike";
 import { useState } from 'react'
@@ -8,6 +8,8 @@ import { useDeletePost } from "@/hooks/useFirebaseDeletePost";
 import { useMutation } from "@tanstack/react-query";
 import { savePost } from "@/hooks/useFirebaseSavePost";
 import Image from "next/image";
+
+
 
 const Post = () => {    
     const auth = getAuth();
@@ -47,7 +49,7 @@ const Post = () => {
 
             {
                 usersPosts && usersPosts.length > 0
-                    ? usersPosts?.map((post: any) => (
+                    ? usersPosts?.map((post: PostType) => (
                         <div key={post.id} className="w-full py-5 bg-white shadow-md border border-gray-300 rounded-2xl">
 
                             <div className="relative flex items-center justify-between w-full px-4 pb-5 border-b border-gray-300">

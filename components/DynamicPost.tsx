@@ -123,6 +123,7 @@ const DynPost: FC<DynPost> = ({ post, isLoading, isError, error }) => {
                 isError && <h2 className="text-red-900 text-lg text-center">{error?.message}</h2>
             }
 
+
             {
                 isLoading && (
                     <div className="w-full rounded-tl-2xl rounded-tr-2xl max-[850px]:rounded-none py-5 bg-white shadow-md max-[850px]:shadow-none border border-gray-300 animate-pulse">
@@ -173,7 +174,8 @@ const DynPost: FC<DynPost> = ({ post, isLoading, isError, error }) => {
                                             src={com.image} 
                                             alt={com.name + 'image'}
                                             className="w-11 h-11 rounded-full object-cover"
-                                            fill
+                                            width={100}
+                                            height={100}
                                         />
                                         <div className="mt-2">
                                             <h3 className="text-xl font-medium">{com.name}</h3>

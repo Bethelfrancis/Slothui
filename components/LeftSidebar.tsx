@@ -78,13 +78,13 @@ const LeftSide = () => {
                         </div>
 
                         <Link href='/login'>
-                            <Image width={100} height={100} src="/exit.png" alt="Logout Icon" className="hover:border-2 border-2 border-transparent hover:border-blue-600 p-1 cursor-pointer rounded-lg transition-all duration-500 w-6 h-6"/>
+                            <Image width={100} height={100} src="/exit.png" alt="Logout Icon" className="hover:border-2 border-2 border-transparent hover:border-red-600 p-1 cursor-pointer rounded-lg transition-all duration-500 w-8 h-8"/>
                         </Link>
                     </>
                 )}
 
                 {
-                    isError && <h2 className="text-red-700 text-lg text-center">{error.message}</h2>
+                    isError && <h2 className="text-red-700 text-lg text-center">{'Something went wrong'}</h2>
                 }
 
                 {

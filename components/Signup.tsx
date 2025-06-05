@@ -81,8 +81,13 @@ const SignUpForm = () => {
     
             alert('Account created successfully!');
             router.push('/dashboard');
-        } catch (error: any) {
-            setError(error.message);
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                console.error("Signup Error:", error.message);
+                setError(error.message); // 👈 show Firebase error to user
+            } else {
+                setError("An unknown error occurred.");
+            }
         } finally {
             setLoading(false);
         }
