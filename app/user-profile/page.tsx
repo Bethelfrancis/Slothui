@@ -318,7 +318,7 @@ const ProfilePage = () => {
                                                 ))
                                             ) : (
                                                 <div className="w-full h-44 flex items-center justify-center">
-                                                    <p>You haven't posted anything yet.</p>
+                                                    <p>You haven&#39;t posted anything yet.</p>
                                                 </div>
                                             )
                                         )
@@ -357,7 +357,7 @@ const ProfilePage = () => {
                                                 ))
                                             ) : (
                                                 <div className="w-full h-44 flex items-center justify-center">
-                                                    <p>You haven't saved any posts yet.</p>
+                                                    <p>You haven&#39;t saved any posts yet.</p>
                                                 </div>
                                             )
                                         )

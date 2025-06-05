@@ -4,7 +4,7 @@ import { useFirebaseUser } from "@/hooks/useFirebaseUser";
 import Image from "next/image";
 
 const LeftSide = () => {
-    const { data: userData, isLoading, isError, error } = useFirebaseUser();
+    const { data: userData, isLoading, isError } = useFirebaseUser();
 
     return (
         <div

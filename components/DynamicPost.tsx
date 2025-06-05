@@ -5,21 +5,33 @@ import { FC } from "react";
 import DynComment from "./DynamicComment";
 import Image from "next/image";
 
-interface DynPost {
-    post: any,
-    isLoading: boolean,
-    isError: boolean,
-    error: Error | null
-}
-
 interface Comment {
-    userId: string
-    name: string
-    image: string
-    text: string
+    userId: string;
+    name: string;
+    image: string;
+    text: string;
 }
 
-const DynPost: FC<DynPost> = ({ post, isLoading, isError, error }) => {
+interface Post {
+    id: string;
+    uid: string;
+    name: string;
+    image: string;
+    bio: string;
+    desc: string;
+    postImage?: string;
+    likes: string[];
+    comment: Comment[];
+}
+
+interface DynPostProps {
+    post: Post | null;
+    isLoading: boolean;
+    isError: boolean;
+    error: Error | null;
+}
+
+const DynPost: FC<DynPostProps> = ({ post, isLoading, isError, error }) => {
     const toggleLike = useToggleLike();
 
     const handleLike = async (postId: string, likes: string[]) => {
@@ -194,7 +206,7 @@ const DynPost: FC<DynPost> = ({ post, isLoading, isError, error }) => {
             </div>
 
 
-            <DynComment postId={post && post.id} />
+            {post && <DynComment postId={post && post.id} />}
         
         </div>
     );

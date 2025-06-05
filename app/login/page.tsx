@@ -13,7 +13,7 @@ const Login = () => {
             <LogIn />
 
             <p className="text-white text-med text-center">
-                Don't have an accoount {''}
+                Don&apos;t have an accoount {''}
                 <Link href='/'>
                     <span className="text-midnight underline">Create One</span>
                 </Link>
