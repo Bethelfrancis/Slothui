@@ -93,6 +93,16 @@ const SignUpForm = () => {
         }
     };
 
+    const handleNext = (e: React.MouseEvent) => {
+        e.preventDefault();
+        if (step < 4) setStep(step + 1);
+    };
+
+    const handleBack = (e: React.MouseEvent) => {
+        e.preventDefault();
+        if (step > 1) setStep(step - 1);
+    };
+
     return (
         <form className="bg-midnight max-w-[500px] w-full px-4 py-5 text-white shadow-2xl rounded-2xl">
             {step === 1 && (
@@ -165,7 +175,7 @@ const SignUpForm = () => {
 
             {step === 3 && (
                 <div className="w-full mb-5">
-                    <label className="block text-white text-med mb-2">Upload Background Image:</label>
+                    <label className="block text-white text-med mb-2">Upload Profile Image:</label>
                     <input
                         type="file"
                         accept="image/*"
@@ -185,32 +195,31 @@ const SignUpForm = () => {
             )}
 
             {step === 4 && (
-                    <div className="w-full mb-5">
-                        <label className="block text-white text-med mb-2">Upload Background Image:</label>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleBgUpload}
-                            className="w-full px-3 py-2 bg-transparent border border-white rounded-lg text-white file:mr-3 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-white file:text-midnight hover:file:bg-gray-200 cursor-pointer"
+                <div className="w-full mb-5">
+                    <label className="block text-white text-med mb-2">Upload Background Image:</label>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleBgUpload}
+                        className="w-full px-3 py-2 bg-transparent border border-white rounded-lg text-white file:mr-3 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-white file:text-midnight hover:file:bg-gray-200 cursor-pointer"
+                    />
+                    {bgPreview && (
+                        <Image
+                            src={bgPreview}
+                            alt="background preview"
+                            className="w-full relative block h-40 object-cover mx-auto mt-2 rounded-lg"
+                            width={100} 
+                            height={100}
                         />
-                        {bgPreview && (
-                            <Image
-                                src={bgPreview}
-                                alt="background preview"
-                                className="w-full relative block h-40 object-cover mx-auto mt-2 rounded-lg"
-                                width={100} 
-                                height={100}
-                            />
-                        )}
-                    </div>
-
+                    )}
+                </div>
             )}
 
             {error && <p className="text-red-500 text-sm text-center mt-2">{error}</p>}
 
             <div className="mt-5 flex  justify-between">
-                {step > 1 && <button className="bg-white mt-3 w-[30%] py-2 text-midnight text-lg rounded-xl cursor-pointer hover:bg-gray-300 transition-all duration-400 ease-out" onClick={() => setStep(step - 1)}>Back</button>}
-                {step < 4 && <button className="bg-white mt-3 w-[30%] py-2 text-midnight text-lg rounded-xl cursor-pointer hover:bg-gray-300 transition-all duration-400 ease-out" onClick={() => setStep(step + 1)}>Next</button>}
+                {step > 1 && <button className="bg-white mt-3 w-[30%] py-2 text-midnight text-lg rounded-xl cursor-pointer hover:bg-gray-300 transition-all duration-400 ease-out" onClick={handleBack}>Back</button>}
+                {step < 4 && <button className="bg-white mt-3 w-[30%] py-2 text-midnight text-lg rounded-xl cursor-pointer hover:bg-gray-300 transition-all duration-400 ease-out" onClick={handleNext}>Next</button>}
                 {step === 4 && <button className="bg-white mt-3 w-[30%] py-2 text-midnight text-lg rounded-xl cursor-pointer hover:bg-gray-300 transition-all duration-400 ease-out" onClick={handleSubmit} disabled={loading}>{loading ? 'Creating...' : 'Finish'}</button>}
             </div>
         </form>
