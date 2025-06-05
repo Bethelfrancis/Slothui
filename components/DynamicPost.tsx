@@ -19,13 +19,13 @@ interface Post {
     image: string;
     bio: string;
     desc: string;
-    postImage?: string;
+    postImage: string | null;
     likes: string[];
     comment: Comment[];
 }
 
 interface DynPostProps {
-    post: Post | null;
+    post: Post | undefined;
     isLoading: boolean;
     isError: boolean;
     error: Error | null;

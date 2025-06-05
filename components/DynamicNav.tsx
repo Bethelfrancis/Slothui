@@ -1,11 +1,10 @@
+import { Post } from "@/hooks/useFirebasePostId";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FC } from "react";
 
 interface DynName {
-    post?: {
-        name: string,
-    }
+    post: Post | undefined
 }
 
 const DynNav: FC<DynName> = ({ post }) => {
@@ -26,7 +25,9 @@ const DynNav: FC<DynName> = ({ post }) => {
                 height={100}
             />
             
-            <h3 className="text-med text-center font-semibold pl-3 max-lg:pl-1.5">{post?.name + ' ' + 'Post'}</h3>
+            <h3 className="text-med text-center font-semibold pl-3 max-lg:pl-1.5">
+                {post ? `${post.name} Post` : "Loading..."}
+            </h3>
             
         </div>
     );
