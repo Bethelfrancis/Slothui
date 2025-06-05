@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -29,10 +30,12 @@ const Friends: React.FC<FriendsProps> = ({ users, isLoading }) => {
                                 className="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm"
                             >
                                 <div className="flex items-center space-x-3">
-                                    <img 
+                                    <Image 
                                         src={user.image} 
                                         alt={user.name} 
                                         className="w-12 h-12 rounded-full object-cover" 
+                                        width={100} 
+                                        height={100}
                                     />
 
                                     <div>
@@ -45,10 +48,12 @@ const Friends: React.FC<FriendsProps> = ({ users, isLoading }) => {
                                 <Link href={`profile/${user.id}`}>
                                    <button className="flex items-center space-x-2 bg-blues text-white px-4 py-1.5 rounded-full hover:bg-midnight transition-all duration-500 cursor-pointer">
                                         Follow
-                                        <img 
+                                        <Image
                                             src="/plusw.png" 
                                             alt="Plus" 
                                             className="ml-2 -mt-0.5 w-4"
+                                            width={100} 
+                                            height={100}
                                         />
                                     </button> 
                                 </Link>

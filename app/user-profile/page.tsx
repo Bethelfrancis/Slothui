@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useFirebaseUser } from "@/hooks/useFirebaseUser";
 import BottomNav from '@/components/BottomNav';
+import Image from 'next/image';
 
 interface ProfileInfo {
     id: string, 
@@ -159,18 +160,20 @@ const ProfilePage = () => {
                                             backgroundImage: `url(${background || userData?.background})`,
                                         }}
                                     />
-
+                                    
                                     <img 
                                         src={background || userData?.background} 
                                         alt={userData?.name}
                                         className="relative block h-60 object-cover mx-auto"
                                     />
 
-                                    <img
+                                    <Image
                                         src="/edit.svg"
                                         alt="Edit"
                                         className="absolute bottom-1 right-1 w-7 h-7 bg-white p-1 rounded-full shadow-md cursor-pointer hover:scale-105 transition z-10"
                                         onClick={() => bgInputRef.current?.click()}
+                                        width={100} 
+                                        height={100}
                                     />
 
                                     <input
@@ -195,11 +198,13 @@ const ProfilePage = () => {
                                             transition={{ duration: 0.5 }}
                                         />
 
-                                        <img
+                                        <Image
                                             src="/edit.svg"
                                             alt="Edit"
                                             className="absolute bottom-1 right-1 w-7 h-7 bg-white p-1 rounded-full shadow-md cursor-pointer hover:scale-105 transition"
                                             onClick={() => fileInputRef.current?.click()}
+                                            width={100} 
+                                            height={100}
                                         />
 
                                         <input type="file" accept="image/*" ref={fileInputRef} onChange={handleAvatarUpload} className="hidden" />
@@ -277,16 +282,20 @@ const ProfilePage = () => {
                                                     <Link key={post.id} href={`post/${post.id}`} className="mb-4 w-1/2 max-[550px]:w-full bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-lg transition duration-500">
                                                         {
                                                             post.postImage ? (
-                                                            <img
+                                                                <Image
                                                                     src={post.postImage} 
                                                                     alt="Liked Post" 
-                                                                    className="w-full h-44 rounded-md object-cover" 
+                                                                    className="w-full h-44 rounded-md object-cover"
+                                                                    width={100} 
+                                                                    height={100} 
                                                                 /> 
                                                             ) : (
-                                                                <img
+                                                                <Image
                                                                     src='placeholder.jfif'
                                                                     alt="Liked Post" 
-                                                                    className="w-full h-44 rounded-md object-cover" 
+                                                                    className="w-full h-44 rounded-md object-cover"
+                                                                    width={100} 
+                                                                    height={100} 
                                                                 />
                                                             )
                                                         }
@@ -312,16 +321,20 @@ const ProfilePage = () => {
                                                     <Link key={post.id} href={`post/${post.id}`} className="mb-4 w-1/2 max-[550px]:w-full bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-lg transition duration-500">
                                                         {
                                                             post.postImage ? (
-                                                            <img
+                                                                <Image
                                                                     src={post.postImage} 
                                                                     alt="Liked Post" 
-                                                                    className="w-full h-44 rounded-md object-cover" 
-                                                                /> 
+                                                                    className="w-full h-44 rounded-md object-cover"
+                                                                    width={100} 
+                                                                    height={100} 
+                                                                />
                                                             ) : (
-                                                                <img
+                                                                <Image
                                                                     src='placeholder.jfif'
                                                                     alt="Liked Post" 
                                                                     className="w-full h-44 rounded-md object-cover" 
+                                                                    width={100} 
+                                                                    height={100}
                                                                 />
                                                             )
                                                         }

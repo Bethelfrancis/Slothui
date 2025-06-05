@@ -6,6 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useChatId } from "@/hooks/useFirebaseChatId";
 import LeftSide from "@/components/LeftSidebar";
 import RightSide from "@/components/RightSidebar";
+import Image from "next/image";
 
 const ChatPage = () => {
     const params = useParams();
@@ -67,12 +68,17 @@ const ChatPage = () => {
                         {otherUser ? otherUser.name : "Loading..."}
                     </p>
 
-                    <img 
-                        src="/upright.png" 
-                        alt="Left Arrow" 
-                        className="absolute left-4 top-6 rotate-[225deg] w-6 cursor-pointer"
-                        onClick={previousPage}
-                    />
+                    <div className="w-6">
+                        <Image 
+                            src="/upright.png" 
+                            alt="Left Arrow" 
+                            className="absolute left-4 top-6 rotate-[225deg] w-6 cursor-pointer"
+                            onClick={previousPage}
+                            width={100} 
+                            height={100}
+                        />
+                    </div>
+                    
                     
                 </div>
 
@@ -141,10 +147,12 @@ const ChatPage = () => {
                 <div className="flex items-center gap-2 border-t-[3px] border-gray-300 py-2 px-7 rounded-tl-xl rounded-tr-xl">
 
                     <button className="mr-5">
-                        <img
+                        <Image
                             src="/Plus.png"
                             alt="Plus Icon"
-                            className="cursor-pointer"
+                            className="cursor-pointer w-8"
+                            width={100} 
+                            height={100}
                         />
                     </button>
 
@@ -162,10 +170,12 @@ const ChatPage = () => {
                         disabled={sending}
                         className="ml-2"
                     >
-                        <img
+                        <Image
                             src="/Send.png"
                             alt="Comment Icon"
-                            className="cursor-pointer"
+                            className="cursor-pointer w-8"
+                            width={100} 
+                            height={100}
                         />
                     </button>
 

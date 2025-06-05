@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Suggested from "./Sugguested";
 import { useFirebaseUser } from "@/hooks/useFirebaseUser";
+import Image from "next/image";
 
 const RightSide = () => {
     const { data: userData, isLoading } = useFirebaseUser();
@@ -17,7 +18,7 @@ const RightSide = () => {
                             <div className="w-9 h-9 rounded-full bg-gray-300 animate-pulse"></div>
                         ) : (
                             <Link href='/profile'>
-                                <img 
+                                <img
                                     src={userData?.image} 
                                     alt={userData?.name} 
                                     className="w-9 h-9 rounded-full object-cover shadow-lg"
@@ -33,18 +34,22 @@ const RightSide = () => {
                 <div className="relative flex space-x-1 z-20">
 
                     <Link href={'/messages'}>
-                        <img 
+                        <Image 
                             src="/mesages.png" 
                             alt="Mesage Icon" 
                             className="w-9"
+                            width={100}
+                            height={100}
                         />
                     </Link>
                     
                     <Link href='/setting'>
-                        <img 
+                        <Image 
                             src="/setings.png" 
                             alt="Settings Icon" 
                             className="w-9"
+                            width={100}
+                            height={100}
                         />  
                     </Link>
 
@@ -59,10 +64,12 @@ const RightSide = () => {
                 <Link href={'/friends'}>
                     <div className="max-xl:hidden flex items-center space-x-0.5 pr-3 cursor-pointer">
                         <p className="text-blues font-semibold">See All</p>
-                        <img 
+                        <Image 
                             src="/upright.png" 
                             alt="Upright Icon" 
                             className="w-[17px]"
+                            width={100}
+                            height={100}
                         />
                     </div>
                 </Link>

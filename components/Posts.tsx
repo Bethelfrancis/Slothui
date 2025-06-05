@@ -7,6 +7,7 @@ import { getAuth } from "firebase/auth";
 import { useDeletePost } from "@/hooks/useFirebaseDeletePost";
 import { useMutation } from "@tanstack/react-query";
 import { savePost } from "@/hooks/useFirebaseSavePost";
+import Image from "next/image";
 
 const Post = () => {    
     const auth = getAuth();
@@ -53,10 +54,12 @@ const Post = () => {
                                 
                                 <Link href={`profile/${post.uid}`}>
                                     <div className="flex items-center">
-                                        <img 
+                                        <Image 
                                             src={post.image} 
                                             alt="User Image" 
                                             className="w-10 h-10 rounded-full object-cover mr-2"
+                                            width={100} 
+                                            height={100}
                                         />
 
                                         <div>
@@ -74,7 +77,7 @@ const Post = () => {
 
                                     {
                                         currentUser?.uid === post.uid && (
-                                            <img 
+                                            <Image 
                                                 src="/delete-48.png" 
                                                 alt="Options Icon" 
                                                 className="w-5 h-5 cursor-pointer opacity-65"
@@ -82,6 +85,8 @@ const Post = () => {
                                                     console.log("Trying to delete:", post.id);
                                                     handleDeletePost(post.id)
                                                 }}
+                                                width={100} 
+                                                height={100}
                                             />
                                         )
                                     }
@@ -99,10 +104,12 @@ const Post = () => {
                                 <Link href={`post/${post.id}`}>
                                     {
                                         post.postImage && (
-                                            <img 
+                                            <Image 
                                                 src={post.postImage} 
                                                 alt="Post Image" 
                                                 className="rounded-2xl mx-auto max-w-full w-fit max-h-[360px] h-full object-cover"
+                                                width={100} 
+                                                height={100}    
                                             />
                                         )
                                     }
@@ -113,20 +120,24 @@ const Post = () => {
                                     <div className="flex space-x-10">
 
                                         <div className="flex items-center space-x-2">
-                                            <img 
+                                            <Image 
                                                 src="/like.png" 
                                                 alt="ThumbUp Icon"
-                                                className="cursor-pointer" 
+                                                className="cursor-pointer w-6" 
                                                 onClick={() => handleLike(post.id, post.likes)}
+                                                width={100} 
+                                                height={100}
                                             />
                                             <p className="opacity-70 text-sml">{post.likes.length} Likes</p>
                                         </div>
 
                                         <div className="flex items-center space-x-2">
-                                            <img 
+                                            <Image 
                                                 src="/comment.png" 
                                                 alt="Comment Icon"
-                                                className="cursor-pointer" 
+                                                className="cursor-pointer w-6"
+                                                width={100} 
+                                                height={100} 
                                             />
                                             <p className="opacity-70 text-sml">{post.comment.length} Comments</p>
                                         </div>
@@ -140,10 +151,12 @@ const Post = () => {
                                         }}
                                         className={`p-0.5 cursor-pointer ${clicked ? 'bg-blues' : 'bg-transparent'}`}
                                     >
-                                        <img 
+                                        <Image 
                                             src="/save.png" 
                                             alt="Save Icon"
                                             className="w-3 h-4 mx-auto my-auto"
+                                            width={100} 
+                                            height={100}
                                         />
                                     </div>
 
@@ -152,20 +165,24 @@ const Post = () => {
                                 <div className="hidden max-[455px]:flex items-center justify-between w-full mt-5 space-x-10">
 
                                     <div className="flex items-center space-x-2">
-                                        <img 
+                                        <Image 
                                             src="/like.png" 
                                             alt="ThumbUp Icon"
-                                            className="cursor-pointer" 
+                                            className="cursor-pointer w-6" 
                                             onClick={() => handleLike(post.id, post.likes)}
+                                            width={100} 
+                                            height={100}
                                         />
                                         <p className="opacity-70 text-sml">{post.likes.length}</p>
                                     </div>
 
                                     <div className="flex items-center space-x-2">
-                                        <img 
+                                        <Image 
                                             src="/comment.png" 
                                             alt="Comment Icon"
-                                            className="cursor-pointer" 
+                                            className="cursor-pointer w-6" 
+                                            width={100} 
+                                            height={100}
                                         />
                                         <p className="opacity-70 text-sml">{post.comment.length}</p>
                                     </div>
@@ -177,10 +194,12 @@ const Post = () => {
                                         }}
                                         className={`p-0.5 cursor-pointer ${clicked ? 'bg-blues' : 'bg-transparent'}`}
                                     >
-                                        <img 
+                                        <Image 
                                             src="/save.png" 
                                             alt="Save Icon"
                                             className="w-3 h-4 mx-auto my-auto"
+                                            width={100} 
+                                            height={100}
                                         />
                                     </div>
                                     
@@ -216,10 +235,12 @@ const Post = () => {
                             </div>
 
                             <div>  
-                                <img 
+                                <Image 
                                     src="/threedot.png" 
                                     alt="Options Icon" 
-                                    className="cursor-pointer opacity-40"
+                                    className="cursor-pointer opacity-40 w-[5px]"
+                                    width={100} 
+                                    height={100}
                                 />
                             </div>
 
@@ -238,19 +259,23 @@ const Post = () => {
                                 <div className="flex space-x-10">
 
                                     <div className="flex items-center space-x-2">
-                                        <img 
+                                        <Image 
                                             src="/like.png" 
                                             alt="ThumbUp Icon"
-                                            className="cursor-pointer"
+                                            className="cursor-pointer w-6"
+                                            width={100} 
+                                            height={100}
                                         />
                                         <p className="opacity-70 text-sml"> Likes</p>
                                     </div>
 
                                     <div className="flex items-center space-x-2">
-                                        <img 
+                                        <Image 
                                             src="/comment.png" 
                                             alt="Comment Icon"
-                                            className="cursor-pointer" 
+                                            className="cursor-pointer w-6" 
+                                            width={100} 
+                                            height={100}                   
                                         />
                                         <p className="opacity-70 text-sml"> Comments</p>
                                     </div>
@@ -260,10 +285,12 @@ const Post = () => {
                                 <div
                                     className='p-0.5 cursor-pointer bg-transparent'
                                 >
-                                    <img 
+                                    <Image 
                                         src="/save.png" 
                                         alt="Save Icon"
                                         className="w-3 h-4 mx-auto my-auto"
+                                        width={100} 
+                                        height={100}
                                     />
                                 </div>
 

@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
 import { auth, db } from '@/firebase/config';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const SignUpForm = () => {
     const [step, setStep] = useState(1);
@@ -167,10 +168,12 @@ const SignUpForm = () => {
                         className="w-full px-3 py-2 bg-transparent border border-white rounded-lg text-white file:mr-3 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-white file:text-midnight hover:file:bg-gray-200 cursor-pointer"
                     />
                     {imagePreview && (
-                        <img
+                        <Image
                             src={imagePreview}
                             alt="Profile preview"
                             className="w-32 h-32 mx-auto rounded-full border-4 border-white shadow-lg object-cover mt-3"
+                            width={100} 
+                            height={100}
                         />
                     )}
                 </div>
@@ -186,10 +189,12 @@ const SignUpForm = () => {
                             className="w-full px-3 py-2 bg-transparent border border-white rounded-lg text-white file:mr-3 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-white file:text-midnight hover:file:bg-gray-200 cursor-pointer"
                         />
                         {bgPreview && (
-                            <img
+                            <Image
                                 src={bgPreview}
                                 alt="background preview"
                                 className="w-full relative block h-40 object-cover mx-auto mt-2 rounded-lg"
+                                width={100} 
+                                height={100}
                             />
                         )}
                     </div>

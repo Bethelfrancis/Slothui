@@ -1,4 +1,5 @@
 import { useFetchSuggestedUsers } from "@/hooks/useFirebaseSuggestedUsers";
+import Image from "next/image";
 import Link from "next/link";
 
 const Suggested = () => {
@@ -14,10 +15,12 @@ const Suggested = () => {
                             <div  className="flex items-center justify-between w-full py-3 border-b border-gray-300">
                                             
                                 <div className="flex items-center">
-                                    <img 
+                                    <Image 
                                         src={user.image} 
                                         alt={user.name} 
                                         className="w-10 h-10 rounded-full object-cover mr-2"
+                                        width={100} 
+                                        height={100}
                                     />
 
                                     <div>
@@ -30,10 +33,12 @@ const Suggested = () => {
                                     </div>
                                 </div>
 
-                                <img 
+                                <Image 
                                     src="/pluss.png" 
                                     alt="Plus Icon" 
-                                    className=" cursor-pointer"
+                                    className="w-6 cursor-pointer"
+                                    width={100} 
+                                    height={100}
                                 />
                                 
                             </div>

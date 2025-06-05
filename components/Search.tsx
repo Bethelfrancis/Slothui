@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Search = () => {
     return (
         <div className="fixed top-0 left-[20%] max-[850px]:hidden bg-white w-[56%] py-[17px] px-6 max-lg:px-3 border-b border-gray-300 z-30">
@@ -8,10 +10,12 @@ const Search = () => {
                     placeholder="Search for friends"
                     className="border border-r-0 border-gray-300 px-3 py-1 rounded-l-3xl placeholder:font-medium w-full outline-0"
                 />
-                <img 
+                <Image 
                     src="/search.png" 
                     alt="search icon" 
-                    className="border border-l-0 border-gray-300 px-2 py-1.5 rounded-r-3xl cursor-pointer hover:shadow-2xl"
+                    className="border border-l-0 border-gray-300 px-2 py-1.5 rounded-r-3xl cursor-pointer hover:shadow-2xl w-[36.5px]"
+                    width={100}
+                    height={100}
                 />
             </div>
 

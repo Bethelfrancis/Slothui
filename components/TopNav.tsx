@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const TopNav = () => {
@@ -12,20 +13,24 @@ const TopNav = () => {
                     placeholder="Search for friends"
                     className="border border-r-0 border-gray-300 px-3 py-1 rounded-l-3xl placeholder:font-medium w-full outline-0"
                 />
-                <img 
+                <Image 
                     src="/search.png" 
                     alt="search icon" 
-                    className="border border-l-0 border-gray-300 px-2 py-1.5 rounded-r-3xl cursor-pointer hover:shadow-2xl"
+                    className="border border-l-0 border-gray-300 px-2 py-1.5 rounded-r-3xl cursor-pointer hover:shadow-2xl w-[36.5px]"
+                    width={100}
+                    height={100}
                 />
             </div>
 
             <Link href='/create-post' className="max-[450px]:w-full">
                 <button className="max-[450px]:w-full flex items-center justify-center py-2 px-6 bg-blues text-white rounded-3xl cursor-pointer hover:bg-midnight transition-all duration-500">
                     Add New Post
-                    <img 
+                    <Image 
                         src="/plusw.png" 
                         alt="Plus" 
-                        className="ml-2 -mt-0.5 w-4"
+                        className="ml-2 -mt-0.5 w-4 h-4"
+                        width={100}
+                        height={100}
                     />
                 </button>
             </Link>

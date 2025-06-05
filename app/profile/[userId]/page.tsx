@@ -8,6 +8,7 @@ import { useToggleFollow } from "@/hooks/useFirebaseFollow";
 import { useFirebaseUser } from "@/hooks/useFirebaseUser";
 import { useUserProfileData, ProfileInfo } from "@/hooks/useFirebaseUserId";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
@@ -28,6 +29,14 @@ const UsersProfile = () => {
                 
                 <Navbar />
                 <Search />
+
+                {
+                    userError && (
+                        <div className='bg-red-100 text-red-700 text-center border border-red-300 p-3 rounded mb-4 text-sm'>
+                            {'Something went wrong.'}
+                        </div>
+                    )
+                }
 
                 {
                     isLoadingUser ? (
@@ -166,11 +175,28 @@ const UsersProfile = () => {
                                                 href={`post/${post.id}`}
                                                 className="mb-4 w-1/2 max-[455px]:w-full bg-white rounded-lg shadow-xl cursor-pointer hover:shadow-lg transition duration-500"
                                             >
-                                                <img 
-                                                    src={post.postImage} 
-                                                    alt="Liked Post" 
-                                                    className="w-full h-44 rounded-md object-cover border border-gray-300" 
-                                                />
+
+                                                {
+                                                    post.postImage ? (
+                                                        <Image
+                                                            src={post.postImage} 
+                                                            alt="Liked Post" 
+                                                            className="w-full h-44 rounded-md object-cover border border-gray-300" 
+                                                            width={100} 
+                                                            height={100}
+                                                        />
+                                                        
+                                                    ) : (
+                                                        <Image
+                                                            src='placeholder.jfif'
+                                                            alt="Liked Post" 
+                                                            className=" rounded-md object-cover" 
+                                                            width={100} 
+                                                            height={100}
+                                                        />
+                                                    )
+                                                }
+
                                                 <div className="p-3">
                                                     <p className="mt-2 text-sm">{post.desc}</p>
                                                     <p className="text-xs opacity-70 mt-1">{post.likes.length} Likes</p>
@@ -184,14 +210,6 @@ const UsersProfile = () => {
 
                             </div>
 
-                        </div>
-                    )
-                }
-
-                {
-                    userError && (
-                        <div className='bg-red-100 text-red-700 text-center border border-red-300 p-3 rounded mb-4 text-sm'>
-                            {'Something went wrong.'} {/* error.message || */}
                         </div>
                     )
                 }

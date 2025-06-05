@@ -184,7 +184,7 @@ const Settings = () => {
                                 handleLogout()
                             }}
                         >
-                        {isLoggingOut ? 'Logging Out...' : 'Logout'}
+                            {isLoggingOut ? 'Logging Out...' : 'Logout'}
                         </motion.button>
                     </div>
 

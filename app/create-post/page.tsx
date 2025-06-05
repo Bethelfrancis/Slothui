@@ -10,6 +10,7 @@ import RightSide from "@/components/RightSidebar";
 import BottomNav from "@/components/BottomNav";
 import Search from "@/components/Search";
 import Navbar from "@/components/Navbar";
+import Image from "next/image";
 
 const CreatePost = () => {
     const { data: userData } = useFirebaseUser();
@@ -78,6 +79,14 @@ const CreatePost = () => {
                             ⚠️ Note: Please upload an image that is less than 1.2MB. Large files may fail to upload.
                         </p>
 
+                        <Image 
+                            src="/Send.png" 
+                            alt="ThumbUp Icon"
+                            className="cursor-pointer w-8"
+                            width={100} 
+                            height={100}
+                        />
+
                         <textarea
                             placeholder="What's on your mind?"
                             className="w-full p-3 mt-4 border border-gray-300 rounded-lg focus:outline-none"
@@ -115,8 +124,15 @@ const CreatePost = () => {
                                     
                                     <button
                                         onClick={removeImage}
-                                        className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full"
+                                        className="absolute top-2 right-2 bg-red-500 p-1 rounded-full cursor-pointer"
                                     >
+                                        <Image 
+                                            src='/cancel.png'
+                                            alt="Cancel"
+                                            className="w-4 h-4"
+                                            width={100} 
+                                            height={100}
+                                        />
                                     </button>
                                 </div>
                             )}
@@ -136,6 +152,7 @@ const CreatePost = () => {
                         >
                             {isPending ? "Posting..." : "Post"}
                         </motion.button>
+
                     </form>
 
                 </div>

@@ -1,5 +1,6 @@
 "use client"
 import { useFirebaseUser } from "@/hooks/useFirebaseUser";
+import Image from "next/image";
 import Link from "next/link";
 
 const Navbar = () => {
@@ -8,20 +9,26 @@ const Navbar = () => {
     return (
         <div className="hidden fixed left-0 top-0 bg-white max-[850px]:flex items-center justify-between w-full px-3 py-2 border-b border-gray-500 z-20">
             
-            <Link href='/dashboard'>
-                <img 
+            <Link className="w-36" href='/dashboard'>
+                <Image 
                     src="/Logo.png" 
                     alt="Logo" 
                     className="-ml-2 cursor-pointer w-36"
+                    width={100} 
+                    height={100}
                 />
             </Link>
                     
             <div className="flex items-center gap-5 -mt-3">
-                <img
-                    src="/search.png"
-                    alt="Search Icon"
-                    className="w-7 h-7 rounded-full object-cover cursor-pointer"
-                />
+                <div className="w-7 h-7">
+                    <Image
+                        src="/search.png"
+                        alt="Search Icon"
+                        className="rounded-full object-cover cursor-pointer"
+                        width={100} 
+                        height={100}
+                    />
+                </div>
                 <Link href='/user-profile'>
                     <img
                         src={userData?.image}

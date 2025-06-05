@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import RightSide from "@/components/RightSidebar";
 import BottomNav from "@/components/BottomNav";
 import Search from "@/components/Search";
+import Image from "next/image";
 
 const Messages = () => {
     const { data: chatUsers, isLoading } = useChatUsers()
@@ -49,11 +50,14 @@ const Messages = () => {
                                         >
 
                                             <div className="flex gap-3 items-start">
-                                                <img 
+                                                <Image 
                                                     src={user.image} 
                                                     alt="avatar" 
-                                                    className="w-12 h-12 rounded-full object-cover" 
-                                                />
+                                                    className="w-12 h-12 rounded-full object-cover"
+                                                    width={100} 
+                                                    height={100}
+                                                />  
+                                                
                                                 <div className="text-med">
                                                     <p className="font-semibold">{user.name}</p>
                                                     <p className="text-xs text-gray-500">{user.username}</p>
