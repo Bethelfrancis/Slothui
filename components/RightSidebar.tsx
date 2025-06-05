@@ -18,10 +18,12 @@ const RightSide = () => {
                             <div className="w-9 h-9 rounded-full bg-gray-300 animate-pulse"></div>
                         ) : (
                             <Link href='/profile'>
-                                <img
-                                    src={userData?.image} 
-                                    alt={userData?.name} 
+                                <Image
+                                    src={userData?.image || ''} 
+                                    alt={userData?.name || ''} 
                                     className="w-9 h-9 rounded-full object-cover shadow-lg"
+                                    width={100}
+                                    height={100}
                                 />
                             </Link>
                         )

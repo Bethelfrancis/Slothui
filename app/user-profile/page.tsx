@@ -161,10 +161,12 @@ const ProfilePage = () => {
                                         }}
                                     />
                                     
-                                    <img 
-                                        src={background || userData?.background} 
-                                        alt={userData?.name}
+                                    <Image
+                                        src={background || userData?.background || ''} 
+                                        alt={userData?.name || ''}
                                         className="relative block h-60 object-cover mx-auto"
+                                        width={100}
+                                        height={100}
                                     />
 
                                     <Image

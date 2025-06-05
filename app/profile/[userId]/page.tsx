@@ -13,6 +13,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 
 const UsersProfile = () => {
+    const MotionImage = motion(Image);
     const { data: userData } = useFirebaseUser();
     const { userId } = useParams()
     const { user, posts, isLoadingUser, userError } = useUserProfileData(userId as string);
@@ -93,16 +94,18 @@ const UsersProfile = () => {
                                         }}
                                     />
 
-                                    <img 
-                                        src={userData?.background} 
-                                        alt={userData?.name}
+                                    <Image 
+                                        src={userData?.background || ''} 
+                                        alt={userData?.name || ''}
                                         className="relative block h-60 object-cover mx-auto"
+                                        width={100}
+                                        height={100}
                                     />
                                 </div>
 
                                 <div className="flex flex-col items-center -mt-16">
 
-                                    <motion.img
+                                    <MotionImage
                                         src={user?.image}
                                         alt={user?.name}
                                         className="w-32 h-32 rounded-full border-4 border-white shadow-lg object-cover z-20"

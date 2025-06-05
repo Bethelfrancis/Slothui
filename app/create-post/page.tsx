@@ -79,14 +79,6 @@ const CreatePost = () => {
                             ⚠️ Note: Please upload an image that is less than 1.2MB. Large files may fail to upload.
                         </p>
 
-                        <Image 
-                            src="/Send.png" 
-                            alt="ThumbUp Icon"
-                            className="cursor-pointer w-8"
-                            width={100} 
-                            height={100}
-                        />
-
                         <textarea
                             placeholder="What's on your mind?"
                             className="w-full p-3 mt-4 border border-gray-300 rounded-lg focus:outline-none"

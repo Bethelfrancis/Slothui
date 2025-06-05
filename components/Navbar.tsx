@@ -30,10 +30,12 @@ const Navbar = () => {
                     />
                 </div>
                 <Link href='/user-profile'>
-                    <img
-                        src={userData?.image}
-                        alt={userData?.name} 
+                    <Image
+                        src={userData?.image || ''}
+                        alt={userData?.name || ''} 
                         className="w-10 h-10 rounded-full object-cover cursor-pointer shadow-lg"
+                        width={100}
+                        height={100}
                     />
                 </Link>
             </div>
