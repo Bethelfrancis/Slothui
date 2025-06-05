@@ -31,8 +31,8 @@ const Navbar = () => {
                 </div>
                 <Link href='/user-profile'>
                     <Image
-                        src={userData?.image || ''}
-                        alt={userData?.name || ''} 
+                        src={userData?.image || '/avatar.png'}
+                        alt={userData?.name || 'user'} 
                         className="w-10 h-10 rounded-full object-cover cursor-pointer shadow-lg"
                         width={100}
                         height={100}

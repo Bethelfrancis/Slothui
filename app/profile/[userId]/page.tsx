@@ -95,8 +95,8 @@ const UsersProfile = () => {
                                     />
 
                                     <Image 
-                                        src={userData?.background || ''} 
-                                        alt={userData?.name || ''}
+                                        src={userData?.background || '/sign.jpg'} 
+                                        alt={userData?.name || 'user'}
                                         className="relative block h-60 object-cover mx-auto"
                                         width={100}
                                         height={100}

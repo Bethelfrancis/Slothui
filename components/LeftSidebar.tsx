@@ -56,7 +56,7 @@ const LeftSide = () => {
                     <>
                         <div className="flex items-center">
                             <Image 
-                                src={userData?.image} 
+                                src={userData?.image || '/avatar.png'} 
                                 alt="User Image" 
                                 className="w-10 h-10 rounded-full object-cover mr-2 max-lg:hidden"
                                 width={100}

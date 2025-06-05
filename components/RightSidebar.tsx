@@ -19,8 +19,8 @@ const RightSide = () => {
                         ) : (
                             <Link href='/profile'>
                                 <Image
-                                    src={userData?.image || ''} 
-                                    alt={userData?.name || ''} 
+                                    src={userData?.image || '/avatar.png'} 
+                                    alt={userData?.name || 'user'} 
                                     className="w-9 h-9 rounded-full object-cover shadow-lg"
                                     width={100}
                                     height={100}
