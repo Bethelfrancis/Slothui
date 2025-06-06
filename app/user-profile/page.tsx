@@ -21,6 +21,7 @@ interface ProfileInfo {
 }
 
 const ProfilePage = () => {
+    const MotionImage = motion(Image);
     const [avatar, setAvatar] = useState<string | null>(null);
     const [background, setBackground] = useState<string | null>(null);
     const [activeTab, setActiveTab] = useState("posts");
@@ -165,14 +166,14 @@ const ProfilePage = () => {
                                     <div
                                         className="absolute inset-0 bg-cover bg-center filter blur-md scale-110"
                                         style={{
-                                            backgroundImage: `url(${background || userData?.background})`,
+                                            backgroundImage: `url(${'/sign.jpg'})`,
                                         }}
                                     />
                                     
                                     <Image
                                         src={background || userData?.background || '/sign.jpg'} 
                                         alt={userData?.name || 'user'}
-                                        className="relative block h-60 object-cover mx-auto"
+                                        className="relative block w-full h-60 object-cover mx-auto"
                                         width={100}
                                         height={100}
                                     />
@@ -199,13 +200,15 @@ const ProfilePage = () => {
                                 <div className="flex flex-col items-center -mt-16">
 
                                     <div className="relative w-32 h-32 bg-white rounded-full">
-                                        <motion.img
+                                        <MotionImage
                                             src={avatar || userData?.image}
                                             alt={userData?.name}
                                             className="w-full h-full rounded-full border-4 border-white shadow-lg object-cover"
                                             initial={{ scale: 0.8, opacity: 0 }}
                                             animate={{ scale: 1, opacity: 1 }}
                                             transition={{ duration: 0.5 }}
+                                            width={100}
+                                            height={100}
                                         />
 
                                         <Image

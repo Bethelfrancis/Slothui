@@ -12,6 +12,7 @@ const createChat = async (otherUid: string): Promise<string> => {
     const chatSnap = await getDoc(chatRef);
 
     if (!chatSnap.exists()) {
+        console.log("Creating chat with members:", [currentUser.uid, otherUid]);
         await setDoc(chatRef, {
             members: [currentUser.uid, otherUid],
             createdAt: serverTimestamp(),

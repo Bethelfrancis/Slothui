@@ -90,16 +90,15 @@ const UsersProfile = () => {
                                     <div
                                         className="absolute inset-0 bg-cover bg-center filter blur-md scale-110"
                                         style={{
-                                            backgroundImage: `url(${userData?.background})`,
+                                            backgroundImage: `url(${user?.background})`,
                                         }}
                                     />
 
                                     <Image 
-                                        src={userData?.background || '/sign.jpg'} 
-                                        alt={userData?.name || 'user'}
-                                        className="relative block h-60 object-cover mx-auto"
-                                        width={100}
-                                        height={100}
+                                        src={user?.background || '/sign.jpg'} 
+                                        alt={user?.name || 'user'}
+                                        className="relative block object-cover mx-auto"
+                                        fill
                                     />
                                 </div>
 
@@ -112,6 +111,8 @@ const UsersProfile = () => {
                                         initial={{ scale: 0.8, opacity: 0 }}
                                         animate={{ scale: 1, opacity: 1 }}
                                         transition={{ duration: 0.5 }}
+                                        width={100}
+                                        height={100}
                                     />
 
                                     <h2 className="mt-2 text-mid font-semibold">
@@ -154,7 +155,7 @@ const UsersProfile = () => {
                                         className='mt-4 px-5 py-2 rounded-3xl duration-500 transition cursor-pointer bg-blues text-white hover:bg-midnight'
                                         onClick={() => toggleFollow(user?.id, user?.followers || [])}
                                     >
-                                        {user?.followers?.includes(userData?.uid) ? 'Following' : 'Follow'}
+                                        {user?.followers?.includes(user?.uid) ? 'Following' : 'Follow'}
                                     </button>
 
                                     
