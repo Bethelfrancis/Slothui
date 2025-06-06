@@ -97,8 +97,9 @@ const UsersProfile = () => {
                                     <Image 
                                         src={user?.background || '/sign.jpg'} 
                                         alt={user?.name || 'user'}
-                                        className="relative block object-cover mx-auto"
-                                        fill
+                                        className="relative block w-fit h-60 object-cover mx-auto"
+                                        width={800}
+                                        height={240}
                                     />
                                 </div>
 

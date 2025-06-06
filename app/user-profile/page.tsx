@@ -166,7 +166,7 @@ const ProfilePage = () => {
                                     <div
                                         className="absolute inset-0 bg-cover bg-center filter blur-md scale-110"
                                         style={{
-                                            backgroundImage: `url(${'/sign.jpg'})`,
+                                            backgroundImage: `url(${background || userData?.background || '/sign.jpg'})`,
                                         }}
                                     />
                                     
@@ -174,8 +174,8 @@ const ProfilePage = () => {
                                         src={background || userData?.background || '/sign.jpg'} 
                                         alt={userData?.name || 'user'}
                                         className="relative block w-fit h-60 object-cover mx-auto"
-                                        width={100}
-                                        height={100}
+                                        width={800}
+                                        height={240}
                                     />
 
                                     <Image
