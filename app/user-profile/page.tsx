@@ -173,7 +173,7 @@ const ProfilePage = () => {
                                     <Image
                                         src={background || userData?.background || '/sign.jpg'} 
                                         alt={userData?.name || 'user'}
-                                        className="relative block w-full h-60 object-cover mx-auto"
+                                        className="relative block w-fit h-60 object-cover mx-auto"
                                         width={100}
                                         height={100}
                                     />

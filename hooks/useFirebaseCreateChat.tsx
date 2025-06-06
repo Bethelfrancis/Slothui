@@ -5,14 +5,18 @@ import { auth, db } from "@/firebase/config";
 const createChat = async (otherUid: string): Promise<string> => {
     const currentUser = auth.currentUser;
     if (!currentUser) throw new Error("Not authenticated");
+    console.log('Current user:', auth.currentUser);
+    const currentUserUid = currentUser.uid;
+    console.log('Authenticated user UID:', currentUserUid);
 
-    const chatId = [currentUser.uid, otherUid].sort().join("_");
+    const chatId = [currentUserUid, otherUid].sort().join("_");
     const chatRef = doc(db, "chats", chatId);
 
     const chatSnap = await getDoc(chatRef);
-
+    
     if (!chatSnap.exists()) {
-        console.log("Creating chat with members:", [currentUser.uid, otherUid]);
+        console.log("Chat does not exist, creating new...");
+
         await setDoc(chatRef, {
             members: [currentUser.uid, otherUid],
             createdAt: serverTimestamp(),
@@ -30,6 +34,8 @@ const createChat = async (otherUid: string): Promise<string> => {
                 chats: arrayUnion(chatId),
             }),
         ]);
+    } else {
+        console.log("Chat already exists, using existing:", chatId);
     }
 
     return chatId;

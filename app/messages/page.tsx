@@ -11,19 +11,19 @@ import Image from "next/image";
 
 const Messages = () => {
     const { data: chatUsers, isLoading } = useChatUsers()
-    const router = useRouter();
-    const { mutate: createChat } = useCreateChat();
 
-    const handleClick = (uid: string) => {
-        createChat(uid, {
-            onSuccess: (chatId) => {
-                router.push(`/messages/${chatId}`);
-            },
-            onError: (err) => {
-                console.error("Failed to create chat:", err);
-            },
-        });
+    const { mutateAsync: createChat } = useCreateChat()
+    const router = useRouter();
+
+    const handleClick = async (userUid: string) => {
+        try {
+            const chatId = await createChat(userUid);
+            router.push(`/messages/${chatId}`);
+        } catch (error) {
+            console.error("Failed to create or fetch chat:", error);
+        }
     };
+
 
     return (
         <div className='bg-white'>
