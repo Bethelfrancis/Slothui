@@ -14,7 +14,6 @@ import { useParams } from "next/navigation";
 
 const UsersProfile = () => {
     const MotionImage = motion(Image);
-    const { data: userData } = useFirebaseUser();
     const { userId } = useParams()
     const { user, posts, isLoadingUser, userError } = useUserProfileData(userId as string);
 
@@ -90,7 +89,7 @@ const UsersProfile = () => {
                                     <div
                                         className="absolute inset-0 bg-cover bg-center filter blur-md scale-110"
                                         style={{
-                                            backgroundImage: `url(${user?.background})`,
+                                            backgroundImage: `url(${user?.background || '/sign.jpg'})`,
                                         }}
                                     />
 
@@ -108,7 +107,7 @@ const UsersProfile = () => {
                                     <MotionImage
                                         src={user?.image}
                                         alt={user?.name}
-                                        className="w-32 h-32 rounded-full border-4 border-white shadow-lg object-cover z-20"
+                                        className="w-32 h-32 rounded-full border-4 border-white shadow-lg object-cover z-10"
                                         initial={{ scale: 0.8, opacity: 0 }}
                                         animate={{ scale: 1, opacity: 1 }}
                                         transition={{ duration: 0.5 }}

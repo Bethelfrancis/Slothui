@@ -51,7 +51,7 @@ const Messages = () => {
 
                                             <div className="flex gap-3 items-start">
                                                 <Image 
-                                                    src={user.image} 
+                                                    src={user.image || '/avatar.png'} 
                                                     alt="avatar" 
                                                     className="w-12 h-12 rounded-full object-cover"
                                                     width={100} 
