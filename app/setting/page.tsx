@@ -79,7 +79,13 @@ const Settings = () => {
                         Settings
                     </h2>
 
-                    <form className="bg-white p-5 rounded-lg shadow-md">
+                    <form 
+                        onSubmit={e => {
+                                e.preventDefault()
+                                updateUser.mutate({ name, username, bio });
+                        }} 
+                        className="bg-white p-5 rounded-lg shadow-md"
+                    >
 
                         <h3 className="text-lg font-medium">
                             Profile Settings
@@ -142,10 +148,6 @@ const Settings = () => {
                         <motion.button
                             whileTap={{ scale: 0.2 }}
                             className="bg-blues text-white px-5 py-2 rounded-lg hover:bg-midnight duration-500 transition w-full cursor-pointer mt-6"
-                            onClick={e => {
-                                e.preventDefault()
-                                updateUser.mutate({ name, username, bio });
-                            }}
                         >
                             <span>{updateUser.isPending ? 'Saving...' : 'Save Changes'}</span>
                         </motion.button>

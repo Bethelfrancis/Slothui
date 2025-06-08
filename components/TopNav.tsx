@@ -4,7 +4,7 @@ import Link from "next/link";
 const TopNav = () => {
     return (
         <div 
-            className="fixed max-[850px]:absolute max-[850px]:top-20 top-0 left-[20%] max-[850px]:left-0 bg-white w-[56%] max-[850px]:w-full flex items-center justify-between max-[450px]:flex-col max-[450px]:space-y-5 py-3.5 px-6  max-lg:px-3 border-b border-gray-300 z-30 max-[850px]:z-10"
+            className="fixed max-[850px]:absolute max-[850px]:top-14 top-0 left-[20%] max-[850px]:left-0 bg-white w-[56%] max-[850px]:w-full flex items-center justify-between max-[450px]:flex-col max-[450px]:space-y-5 py-3.5 px-6  max-lg:px-3 border-b border-gray-300 z-30 max-[850px]:z-10"
         >
             
             <div className="w-[60%] max-[850px]:w-[50%] max-[450px]:w-full flex items-center justify-start">
@@ -16,7 +16,7 @@ const TopNav = () => {
                 <Image 
                     src="/search.png" 
                     alt="search icon" 
-                    className="border border-l-0 border-gray-300 px-2 py-1.5 rounded-r-3xl cursor-pointer hover:shadow-2xl w-[36.5px]"
+                    className="border border-l-0 border-gray-300 px-2 py-1.5 rounded-r-3xl cursor-pointer hover:shadow-2xl w-[39px]"
                     width={100}
                     height={100}
                 />

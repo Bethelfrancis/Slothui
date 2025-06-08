@@ -148,10 +148,9 @@ const Post = () => {
 
                                     <div
                                         onClick={() => {
-                                            setClicked(!clicked)
                                             handleSaveClick(post.id)
                                         }}
-                                        className={`p-0.5 cursor-pointer ${clicked ? 'bg-blues' : 'bg-transparent'}`}
+                                        className='p-0.5 cursor-pointer'
                                     >
                                         <Image 
                                             src="/save.png" 
@@ -194,7 +193,7 @@ const Post = () => {
                                             setClicked(!clicked)
                                             handleSaveClick(post.id)
                                         }}
-                                        className={`p-0.5 cursor-pointer ${clicked ? 'bg-blues' : 'bg-transparent'}`}
+                                        className='p-0.5 cursor-pointer'
                                     >
                                         <Image 
                                             src="/save.png" 

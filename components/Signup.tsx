@@ -124,7 +124,7 @@ const SignUpForm = () => {
                         <input
                             type="text"
                             name="username"
-                            placeholder="@johndoe"
+                            placeholder="johndoe"
                             onChange={handleChange}
                             className="w-full text-white border border-white px-2 py-1 rounded-lg placeholder:text-white placeholder:opacity-80 outline-0"
                             required

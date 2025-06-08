@@ -17,7 +17,7 @@ const UsersDash = () => {
                 <Navbar />
                 <TopNav />
 
-                <div className="w-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-36 max-[450px]:mt-[200px]">
+                <div className="w-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-36 max-[450px]:mt-[180px]">
                     
                     <Post />
                     <BottomNav />
