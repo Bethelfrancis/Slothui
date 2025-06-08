@@ -40,7 +40,7 @@ const UsersProfile = () => {
 
                 {
                     isLoadingUser ? (
-                        <div className="w-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-[70px] animate-pulse max-[850px]:mb-14">
+                        <div className="w-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-[60px] animate-pulse max-[850px]:mb-14">
 
                             <div className="relative w-full bg-white rounded-2xl shadow-lg overflow-hidden">
 
@@ -81,7 +81,7 @@ const UsersProfile = () => {
 
                         </div>
                     ) : (
-                        <div className="w-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-[70px] max-[850px]:mb-14">
+                        <div className="w-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-[60px] max-[850px]:mb-14">
                             
                             <div className="relative w-full bg-white rounded-2xl shadow-lg overflow-hidden">
                                 

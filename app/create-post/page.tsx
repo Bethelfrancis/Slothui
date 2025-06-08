@@ -69,7 +69,7 @@ const CreatePost = () => {
                 <Navbar />
                 <Search />
 
-                <div className="w-full h-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-[70px]">
+                <div className="w-full h-full p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-[60px]">
 
                     <form onSubmit={handleSubmit} className="w-full bg-white p-6 rounded-lg shadow-lg mb-16">
 

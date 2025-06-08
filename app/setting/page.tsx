@@ -73,7 +73,7 @@ const Settings = () => {
                 <Navbar />
                 <Search />
 
-                <div className="relative w-full p-6 py-14 max-[850px]:p-3 max-[850px]:py-10 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-[70px]">
+                <div className="relative w-full p-6 py-14 max-[850px]:p-3 max-[850px]:py-10 bg-gray-100 overflow-auto space-y-7 mt-16 max-[850px]:mt-[60px]">
 
                     <h2 className="text-2xl font-semibold">
                         Settings

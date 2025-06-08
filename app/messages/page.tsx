@@ -35,7 +35,7 @@ const Messages = () => {
                 <Navbar />
                 <Search />
 
-                <div className="w-full h-screen p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 max-[850px]:mt-[70px]">
+                <div className="w-full h-screen p-6 max-[850px]:p-3 bg-gray-100 overflow-auto space-y-7 max-[850px]:mt-[60px]">
                     
                     <div className="mt-14 max-[850px]:mt-0">
                         <h2 className="text-xl font-semibold mb-7">All Messages</h2>

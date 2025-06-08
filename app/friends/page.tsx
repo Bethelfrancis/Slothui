@@ -20,7 +20,7 @@ const FindFriends = () => {
                 <Navbar />
                 <Search />
 
-                <div className="w-full max-[850px]:py-5 mt-16 max-[850px]:mt-[50px]">
+                <div className="w-full max-[850px]:py-5 mt-16 max-[850px]:mt-[40px]">
                     
                     <Friends users={users} isLoading={isLoading} />
 
