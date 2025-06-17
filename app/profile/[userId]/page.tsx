@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 import RightSide from "@/components/RightSidebar";
 import Search from "@/components/Search";
 import { useToggleFollow } from "@/hooks/useFirebaseFollow";
-import { useFirebaseUser } from "@/hooks/useFirebaseUser";
 import { useUserProfileData, ProfileInfo } from "@/hooks/useFirebaseUserId";
 import { motion } from "framer-motion";
 import Image from "next/image";
