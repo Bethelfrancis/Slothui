@@ -72,7 +72,7 @@ const ChatPage = () => {
                         <Image 
                             src="/upright.png" 
                             alt="Left Arrow" 
-                            className="absolute left-4 top-6 rotate-[225deg] w-6 cursor-pointer"
+                            className="absolute left-4 top-3.5 rotate-[225deg] w-6 cursor-pointer"
                             onClick={previousPage}
                             width={100} 
                             height={100}
@@ -161,7 +161,7 @@ const ChatPage = () => {
                         className="ml-2"
                     >
                         <Image
-                            src="/Send.png"
+                            src="/send.png"
                             alt="Comment Icon"
                             className="cursor-pointer w-8"
                             width={100} 
