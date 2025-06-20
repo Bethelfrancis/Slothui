@@ -163,7 +163,7 @@ const ChatPage = () => {
                         <Image
                             src="/send.png"
                             alt="Comment Icon"
-                            className="cursor-pointer w-8"
+                            className="cursor-pointer w-8 h-8"
                             width={100} 
                             height={100}
                         />
