@@ -62,7 +62,7 @@ const ChatPage = () => {
 
             <div className="w-[56%] mx-[20%] max-[850px]:mx-0 max-[850px]:w-full h-screen flex flex-col">
 
-                <div className="p-5 border-b border-gray-300 bg-white sticky top-0 z-10">
+                <div className="p-3 border-b border-gray-300 bg-white sticky top-0 z-10">
 
                     <p className="font-semibold text-xl text-center">
                         {otherUser ? otherUser.name : "Loading..."}
@@ -138,23 +138,13 @@ const ChatPage = () => {
 
                 {
                     sending && (
-                        <div className="relative bottom-5 mx-auto bg-midnight shadow-lg py-2 px-6 rounded-xl">
-                            <p className="text-lg text-white text-center italic">Sending...</p>
+                        <div className="relative bottom-5 mx-auto bg-midnight shadow-lg py-1.5 px-4 rounded-xl">
+                            <p className="text-sm text-white text-center italic">Sending...</p>
                         </div>
                     )
                 }
 
-                <div className="flex items-center gap-2 border-t-[3px] border-gray-300 py-2 px-7 rounded-tl-xl rounded-tr-xl">
-
-                    <button className="mr-5">
-                        <Image
-                            src="/Plus.png"
-                            alt="Plus Icon"
-                            className="cursor-pointer w-8"
-                            width={100} 
-                            height={100}
-                        />
-                    </button>
+                <div className="flex items-center gap-2 border-t-[3px] border-gray-300 py-1.5 px-3 rounded-tl-xl rounded-tr-xl">
 
                     <input
                         value={text}
